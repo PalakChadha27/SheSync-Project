@@ -466,7 +466,7 @@ export function PeriodTracker() {
             </div>
 
             {renderSection(
-              "Cycle Information",
+              <span style={{ color: "#db0085" }}>Cycle Information</span>,
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -519,7 +519,7 @@ export function PeriodTracker() {
                   Predict Next Period
                 </button>
                 {nextPeriodPrediction && (
-                  <p className="text-center font-medium text-white-700 dark:text-gray-300 bg-pink-100 dark:bg-pink-900 p-3 rounded-md">
+                  <p className="text-center font-medium text-white-700 dark:text-gray-300 bg-pink-300 dark:bg-pink-500 p-3 rounded-md">
                     Predicted next period:{" "}
                     {format(new Date(nextPeriodPrediction), "MMMM d, yyyy")}
                   </p>
@@ -529,7 +529,7 @@ export function PeriodTracker() {
             )}
 
             {renderSection(
-              "Mood Tracking",
+              <span style={{ color: "#db0085" }}>Mood Tracking</span>,
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -542,7 +542,7 @@ export function PeriodTracker() {
                         onClick={() => handleMoodTypeChange(mood.name)}
                         className={`text-white flex items-center justify-center px-4 py-2 border rounded-md transition duration-300 ${
                           moodTypes.includes(mood.name)
-                            ? "bg-pink-200 text-white-800 border-pink-300 dark:bg-pink-700 dark:text-gray-200 dark:border-pink-600"
+                            ? "bg-pink-500 text-white-800 border-pink-300 dark:bg-pink-500 dark:text-gray-200 dark:border-pink-600"
                             : "bg-white text-gray-600 border-gray-300 hover:bg-pink-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-pink-900"
                         }`}
                       >
@@ -598,7 +598,7 @@ export function PeriodTracker() {
             )}
 
             {renderSection(
-              "Symptom Tracking",
+              <span style={{ color: "#db0085" }}>Symptom Tracking</span>,
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -631,7 +631,7 @@ export function PeriodTracker() {
                       onChange={(e) =>
                         handleSymptomSeverityChange(symptom, e.target.value)
                       }
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-300 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-300 dark:bg-gray-700  text-white dark:text-white"
                     >
                       <option value="">Select Severity</option>
                       {symptomSeverityOptions.map((severity) => (
@@ -663,7 +663,7 @@ export function PeriodTracker() {
             )}
 
             {renderSection(
-              "Sleep Tracking",
+              <span style={{ color: "#db0085" }}>Sleep Tracking</span>,
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -704,15 +704,15 @@ export function PeriodTracker() {
 
             {showHealthTips &&
               renderSection(
-                "Health Tips",
+                <span style={{ color: "#db0085" }}>Health Tips</span>,
                 <div className="space-y-4">
                   {generateHealthTips.map((tip, index) => (
                     <div
                       key={index}
                       className="flex items-start space-x-3 bg-white dark:bg-gray-700 p-4 rounded-md shadow-sm"
                     >
-                      <Heart className="w-6 h-6 text-pink-500 flex-shrink-0 mt-1" />
-                      <p className="text-gray-700 dark:text-gray-300">{tip}</p>
+                      <Heart className="w-6 h-6 text-pink-600 flex-shrink-0 mt-1" />
+                      <p className="text-white  dark:text-pink-500">{tip}</p>
                     </div>
                   ))}
                 </div>,

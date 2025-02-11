@@ -126,7 +126,7 @@
   /* 2 */
   border-style: solid;
   /* 2 */
-  border-color: #e5e7eb;
+  border-color: #ee5e7b;
   /* 2 */
 }
 
@@ -3160,7 +3160,7 @@ video {
 }
 
 :root {
-  --header-color: #fc00ff;
+  --header-color: #e3007b;
   /**********************YET TO BE DECIDED************************/
   --text-color: #000;
   --sub-heading-color: #000;
@@ -3307,13 +3307,13 @@ button:focus:before {
 }
 
 span {
-  color: #fc00ff;
+  color: #e3007b;
   font-family: sans-serif;
 }
 
 .unique-span {
-  color: #fc00ff;
-  text-shadow: 0 0 20px #fc00ff;
+  color: #e3007b;
+  text-shadow: 0 0 20px #e3007b;
   font-family: Dancing Script;
 }
 
@@ -3337,7 +3337,7 @@ span {
 
 ::-webkit-scrollbar-thumb {
   display: block;
-  background: linear-gradient(rgb(101, 5, 82), #fc00ff);
+  background: linear-gradient(rgb(101, 5, 82), #e3007b);
   border-radius: 100px;
 }
 

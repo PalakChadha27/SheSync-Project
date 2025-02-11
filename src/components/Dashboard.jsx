@@ -247,7 +247,7 @@ export function Dashboard() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Fetching your Data...</div>;
   }
 
   if (!periodData) {

@@ -121,7 +121,11 @@ export function Landing() {
           <SidebarLink
             icon={<HeartHandshake size={20} />}
             label="ShareJoy"
-            onClick={() => window.open("https://padforward.us/", "_blank")}
+            onClick={() => 
+              window.open(
+                "https://padforward.us/"
+                )  
+              }
           />
           <SidebarLink
             icon={<Handshake size={20} />}
