@@ -711,10 +711,10 @@ export function Landing() {
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">
-                      Team BYTE ME
+                      Team WEB PIONEERS
                     </h3>
                     <p className="text-gray-400">
-                      Building for WIEgnite 2.0 - February 2, 2025
+                      Building for HACK-IT-UP 
                     </p>
                   </div>
                   <div className="bg-green-500/20 px-3 py-1 rounded-full flex items-center">
@@ -798,7 +798,7 @@ export function Landing() {
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-4 w-4 text-gray-400" />
                     <span className="text-gray-400 text-sm">
-                      Started: Jan 2025
+                      Started: Feb 2025
                     </span>
                   </div>
                   <div className="flex items-center space-x-2 justify-end">
