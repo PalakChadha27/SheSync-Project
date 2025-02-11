@@ -946,7 +946,7 @@ export function Landing() {
             <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
               <p className="text-gray-700 dark:text-gray-400">TEAM: BYTE ME</p>
               <p className="text-gray-700 dark:text-gray-400">
-                &copy; 2024 SheSync. All rights reserved.
+                &copy; 2025 SheSync. All rights reserved.
               </p>
             </div>
           </footer>
