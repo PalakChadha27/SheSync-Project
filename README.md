@@ -113,14 +113,6 @@ npm run dev
 
 ---
 
-## 📦 **Hackathon Deliverables**
-- **Wireframes/Mockups**: Interactive designs showcasing the dashboard, tracker, and e-commerce sections.  
-- **Feature Demonstration**: A live demo of the cycle tracker feature.  
-- **Impact Metrics**: Showcase how the platform reduces stigma and improves menstrual health education.  
-- **Scalability Plan**: Future growth ideas include multilingual support, school partnerships, and NGO collaborations.
-
----
-
 ## 🌍 **Impact**
 
 **SheSync isn’t just a platform—it’s a movement to create a future where menstruation is stigma-free. By offering accessible tools, reliable education, and professional support, we aim to empower young girls to manage their menstrual health with confidence and dignity.**
