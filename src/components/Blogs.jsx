@@ -423,9 +423,9 @@ export function Blogs() {
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
           <div className="flex justify-between items-center">
-            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400">
+            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400">
               Education Hub
-            </h1>
+            </h2>
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-transform hover:scale-110"
@@ -472,8 +472,8 @@ export function Blogs() {
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="px-4 py-2 text-white rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:bg-gray-700 dark:text-white transition-all duration-300 focus:shadow-lg"
-            >
-              <option value="All">All Categories</option>
+            > 
+            <option value="All">All Categories</option> 
               <option value="Health">Health</option>
               <option value="Nutrition">Nutrition</option>
               <option value="Wellness">Wellness</option>

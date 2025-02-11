@@ -616,13 +616,13 @@ export function SymptomAnalysis() {
       {/* Sidebar Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className={`fixed top-4 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none ${
+        className={`fixed top-0 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none ${
           sidebarVisible ? "left-64" : "left-0"
         }`}
         aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       >
         <ChevronRight
-          size={24}
+          size={14}
           className={`transition-transform duration-300 ${
             sidebarVisible ? "rotate-180" : "rotate-0"
           }`}
@@ -637,10 +637,13 @@ export function SymptomAnalysis() {
       >
         <div className="max-w-screen-xl mx-auto p-4 space-y-6  dark:text-gray-100">
           {/* Header */}
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-pink-600 dark:text-pink-400">
+          <div className="flex justify-between items-center"
+          style={{ display: "flex", justifyContent: "centre", alignItems: "center",height:"60px" }}>
+            <h2 className="text-3xl font-bold text-pink-600 dark:text-pink-400"
+            >
               AI-Powered Symptom Analysis
-            </h1>
+
+            </h2>
             <motion.button
               onClick={toggleDarkMode}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"

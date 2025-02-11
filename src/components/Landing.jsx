@@ -70,7 +70,7 @@ export function Landing() {
         style={{ zIndex: 40 }}
       >
         <div className="px-4 py-4 flex flex-col space-y-2">
-          <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">
+          <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 ">
             SheSync
           </h1>
           <SidebarLink
@@ -138,14 +138,14 @@ export function Landing() {
 
       <button
         onClick={toggleSidebar}
-        className="fixed left-0 top-4 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+        className="fixed left-0 top-0 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
         style={{
           transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
         }}
         aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       >
         <ChevronRight
-          size={24}
+          size={14}
           className={`transition-transform duration-300 ${
             sidebarVisible ? "rotate-180" : "rotate-0"
           }`}
@@ -169,9 +169,10 @@ export function Landing() {
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Header */}
           <div className="flex justify-between items-center">
-            <h2 className="text-3xl font-bold text-pink-600 dark:text-pink-400">
-              Welcome to SheSync
-            </h2>
+            <h1 className="text-3xl font-bold text-pink-600 dark:text-pink-400 
+            ">
+            Welcome to SheSync 
+            </h1>
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 "
@@ -187,14 +188,14 @@ export function Landing() {
           <Card className=" hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 dark:hover:bg-pink-500">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-1/2 pr-8">
-                <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                   SheSync: Where Support Meets Empowerment for Every Cycle.
-                </h1>
+                </h2>
                 <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
                   Empowering women through personalized health tracking and
                   education.
-                </p>
-                <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
+                  </p>
+                  <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
                   Explore, learn, and connect with a community that cares about
                   your well-being.
                 </p>
@@ -368,6 +369,46 @@ export function Landing() {
               </div>
             </div>
           </Card>
+           {/* Parent Dashboard Access */}
+          <Card className="my-8  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
+            <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl p-6 relative overflow-hidden group">
+              <div className="relative z-10 space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      Parent Dashboard
+                    </h3>
+                    <p className="text-gray-200">
+                      Access comprehensive insights for your Child's health
+                    </p>
+                  </div>
+                  <div className="bg-white/20 p-3 rounded-full">
+                    <UserCircle className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+
+                <p className="text-white/80">
+                  Our Parent Dashboard provides a centralized view of your
+                  child's health metrics, allowing you to track growth, monitor
+                  symptoms, and stay informed about their well-being.
+                </p>
+
+                <button
+                  onClick={() => navigate("/parents")}
+                  className="w-full bg-white text-purple-600 px-6 py-3 rounded-lg font-medium
+                             hover:bg-gray-100 transition-all duration-300
+                             flex items-center justify-center space-x-2 group"
+                >
+                  <span>Access Parent Dashboard</span>
+                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+              <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+            </div>
+          </Card>
           {/* Key Benefits Section */}
           <Card className=" hover:bg-pink-200  focus:outline-none focus:ring focus:ring-pink-300 dark:hover:bg-pink-500 ">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100  ">
@@ -411,7 +452,7 @@ export function Landing() {
             </p>
           </Card>
           {/* How It Works Section */}
-          <Card className=" hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+        {/* <Card className=" hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               How SheSync Works
             </h3>
@@ -432,7 +473,7 @@ export function Landing() {
                 description="Receive tailored recommendations and connect with experts for better health management."
               />
             </div>
-          </Card>
+          </Card>*/}
           {/* Testimonials */}
           <Card className=" hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
@@ -450,7 +491,7 @@ export function Landing() {
             </div>
           </Card>
           {/* Latest Blog Posts */}
-          <Card className=" hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+         {/* <Card className=" hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               Latest from Our Blog
             </h3>
@@ -471,7 +512,7 @@ export function Landing() {
                 date="Jan 5, 2025"
               />
             </div>
-          </Card>
+          </Card>*/}
           {/* Success Stories */}
           <Card className="bg-pink-800 text-white  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-6 text-pink-700">
@@ -580,7 +621,7 @@ export function Landing() {
             </div>
           </Card>
           {/*App Features Showcase */}
-          <Card className=" hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+         {/* <Card className=" hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               App Features Showcase
             </h3>
@@ -614,9 +655,9 @@ export function Landing() {
                 }
               />
             </div>
-          </Card>
+          </Card>*/}
           {/* Partnerships */}
-          <Card className=" hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+        {/*  <Card className=" hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               Our Trusted Partners
             </h3>
@@ -631,47 +672,8 @@ export function Landing() {
               <PartnerLogo name="NutriBalance" />
               <PartnerLogo name="MindfulHer" />
             </div>
-          </Card>
-          {/* Parent Dashboard Access */}
-          <Card className="my-8  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
-            <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl p-6 relative overflow-hidden group">
-              <div className="relative z-10 space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      Parent Dashboard
-                    </h3>
-                    <p className="text-gray-200">
-                      Access comprehensive insights for your Child's health
-                    </p>
-                  </div>
-                  <div className="bg-white/20 p-3 rounded-full">
-                    <UserCircle className="h-8 w-8 text-white" />
-                  </div>
-                </div>
-
-                <p className="text-white/80">
-                  Our Parent Dashboard provides a centralized view of your
-                  child's health metrics, allowing you to track growth, monitor
-                  symptoms, and stay informed about their well-being.
-                </p>
-
-                <button
-                  onClick={() => navigate("/parents")}
-                  className="w-full bg-white text-purple-600 px-6 py-3 rounded-lg font-medium
-                             hover:bg-gray-100 transition-all duration-300
-                             flex items-center justify-center space-x-2 group"
-                >
-                  <span>Access Parent Dashboard</span>
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-              <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-            </div>
-          </Card>
+          </Card>*/}
+         
           {/* CTA */}
           <Card className=" dark:hover:bg-pink-500  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
             <div className="text-center">

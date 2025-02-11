@@ -460,7 +460,7 @@ export function PeriodTracker() {
 
           <div className="bg-pink-50 dark:bg-gray-800 rounded-lg shadow-lg p-8 space-y-8">
             <div className="text-center mb-8">
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-black dark:text-gray-300">
                 Track your cycle, moods, symptoms, and sleep
               </p>
             </div>

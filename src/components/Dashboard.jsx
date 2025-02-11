@@ -351,11 +351,11 @@ export function Dashboard() {
         }
       `}</style>
       <aside
-        className={`w-[240px] bg-[rgb(var(--card))] p-6 flex flex-col transition-all duration-300 ease-in-out ${
+        className={`w-[240px] bg-pink-100 dark:bg-gray-800  flex flex-col transition-all duration-300 ease-in-out ${
           sidebarVisible ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <h1 className="text-xl font-semibold text-[rgb(var(--primary))] mb-6">
+        <h1 className="text-xl font-semibold text-pink-600 mb-6">
           SheSync
         </h1>
         <nav className="flex-1">
@@ -453,8 +453,8 @@ export function Dashboard() {
               <p>{error}</p>
             </div>
           )}
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold">Dashboard</h2>
+          <div className="flex items-center justify-between p-4 bg-[var(--fc-accent)] shadow-md">
+            <h2 className="text-lg text-pink-600 font-bold">Dashboard</h2>
             <div className="flex items-center gap-4">
               <Bell className="h-5 w-5 text-[rgb(var(--muted-foreground))]" />
               <button

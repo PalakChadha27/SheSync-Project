@@ -268,14 +268,14 @@ export function Consultations() {
 
       <button
         onClick={toggleSidebar}
-        className="fixed left-0 top-4 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+        className="fixed left-0 top-0 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
         style={{
           transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
         }}
         aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       >
         <ChevronRight
-          size={24}
+          size={14}
           className={`transition-transform duration-300 ${
             sidebarVisible ? "rotate-180" : "rotate-0"
           }`}
@@ -290,14 +290,14 @@ export function Consultations() {
       >
         <div className="container mx-auto py-8 px-4">
           <div className="flex justify-between items-center mb-8">
-            <motion.h1
+            <motion.h2
               className="text-4xl font-bold text-center text-pink-600 dark:text-pink-400"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               Expert Consultations
-            </motion.h1>
+            </motion.h2>
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"

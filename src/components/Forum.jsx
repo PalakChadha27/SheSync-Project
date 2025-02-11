@@ -177,14 +177,14 @@ export function Forum() {
 
       <button
         onClick={toggleSidebar}
-        className="fixed left-0 top-4 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+        className="fixed left-0 top-0 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
         style={{
           transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
         }}
         aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       >
         <ChevronRight
-          size={24}
+          size={14}
           className={`transition-transform duration-300 ${
             sidebarVisible ? "rotate-180" : "rotate-0"
           }`}
@@ -199,7 +199,8 @@ export function Forum() {
       >
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center"
+          style={{ display: "flex", justifyContent: "centre", alignItems: "center",height:"40px" }}>
             <h2 className="text-3xl font-bold text-pink-600 dark:text-pink-400">
               Community Forums
             </h2>

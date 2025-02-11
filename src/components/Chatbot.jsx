@@ -341,8 +341,8 @@ export function Chatbot() {
       <div className="flex-1 flex flex-col bg-[var(--fc-bg-primary)] transition-colors duration-200">
         <div className="flex items-center justify-between p-4 bg-[var(--fc-accent)] shadow-md">
           <h2
-            style={{ fontFamily: "Pacifico, cursive" }}
-            className="text-2xl font-bold text-black"
+            style={{ fontFamily: "sans-serif" }}
+            className="text-2xl font-bold text-pink-600"
           >
             SheSync Chatbot
           </h2>
