@@ -51,20 +51,23 @@ SheSync is an all-in-one interactive platform designed to educate, empower, and 
 ### 7. **Parents Dashboard**
 <img src="pd.png" alt="Parents Dashboard" width="400">
 
-- **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
-- **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
+- **Teen Health Monitoring**: Track cycles with parental consent
+- **Educational Resources**: Guides for puberty conversations
+- **Alert System**: Notifications for irregular patterns
 
 ### 8. **Symptom Analysis**
 <img src="ai sym.png" alt="Analysis" width="400">
 
-- **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
-- **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
+- **AI Symptom Checker**: Cross-reference 10+ conditions
+- **Personalized Reports**: Understand body patterns
+- **Doctor-Ready Summaries**: Generate shareable health timelines
 
 ### 9. **ChatBot**
 <img src="bot.png" alt="Eve" width="400">
 
-- **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
-- **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
+- **24/7 Cycle Support**: Answers 500+ health questions
+- **Multilingual Chat**: English, Spanish, Hindi, Arabic
+- **Emergency Red Flags**: Alerts for dangerous symptoms
   
 ---
 
