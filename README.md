@@ -2,6 +2,9 @@
 
 SheSync is an all-in-one interactive platform designed to educate, empower, and support young girls (ages 13-25) in managing their menstrual health and hygiene. With a mission to normalize conversations around menstruation and reduce stigma, SheSync offers a user-friendly ecosystem packed with educational resources, tracking tools, expert guidance, and community support.
 
+<img src="home.png" alt="HOME" width="400"> <img src="home2.png" alt="HOME" width="400">
+
+
 ---
 
 ## 🚀 **Key Features**
@@ -45,6 +48,11 @@ SheSync is an all-in-one interactive platform designed to educate, empower, and 
 - **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
 - **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
 
+### 7. **Parents Dashboard**
+<img src="pd.png" alt="Parents Dashboard" width="400">
+
+- **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
+- **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
 ---
 
 ## 🛠️ **Technology Stack**
