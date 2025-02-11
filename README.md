@@ -7,6 +7,7 @@ SheSync is an all-in-one interactive platform designed to educate, empower, and 
 ## 🚀 **Key Features**
 
 ### 1. **Educational Hub**
+https://raw.githubusercontent.com/divi-24/SheSync-Project/main/eduaction.png
 - **Interactive Learning Modules**: Gamified lessons to simplify the menstrual cycle, hygiene practices, and debunk myths.  
 - **FAQs and Articles**: Expert-reviewed resources covering topics like PMS, emotional health, and effective period management.  
 - **Videos and Animations**: Engaging visual content explaining anatomy, menstrual cycles, and best practices for menstrual health.
