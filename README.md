@@ -53,6 +53,19 @@ SheSync is an all-in-one interactive platform designed to educate, empower, and 
 
 - **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
 - **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
+
+### 8. **Symptom Analysis**
+<img src="ai sym.png" alt="Analysis" width="400">
+
+- **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
+- **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
+
+### 9. **ChatBot**
+<img src="bot.png" alt="Eve" width="400">
+
+- **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
+- **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
+  
 ---
 
 ## 🛠️ **Technology Stack**
