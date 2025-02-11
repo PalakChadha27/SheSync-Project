@@ -635,35 +635,6 @@ export function Ecom() {
           </section>
 
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-              Special Offers
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {specialOffers.map((offer, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="p-6 bg-gradient-to-br text-white from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 rounded-xl border border-pink-100 dark:border-pink-800"
-                >
-                  <Gift className="h-8 w-8 text-pink-500 mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {offer.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm bg-white dark:bg-gray-800 px-2 py-1 rounded">
-                      {offer.code}
-                    </span>
-                    <span className="text-sm text-white">{offer.expiry}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          <section className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
                 New Arrivals <Sparkles className="h-6 w-6" />
@@ -761,7 +732,6 @@ export function Ecom() {
               ))}
             </motion.div>
           </section>
-
           <section className="space-y-6">
             <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
               Shop by Category
@@ -790,6 +760,36 @@ export function Ecom() {
                 ))}
             </div>
           </section>
+          <section className="space-y-6">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+              Special Offers
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {specialOffers.map((offer, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="p-6 bg-gradient-to-br text-white from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 rounded-xl border border-pink-100 dark:border-pink-800"
+                >
+                  <Gift className="h-8 w-8 text-pink-500 mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {offer.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-sm bg-white dark:bg-gray-800 px-2 py-1 rounded">
+                      {offer.code}
+                    </span>
+                    <span className="text-sm text-white">{offer.expiry}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          
 
           <section className="relative overflow-hidden rounded-2xl">
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 opacity-10" />

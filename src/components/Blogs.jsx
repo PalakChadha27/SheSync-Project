@@ -485,7 +485,7 @@ export function Blogs() {
             </select>
           </div>
           {/* Trophy System */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300">
+          {/*<div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300">
             <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400 mb-4">
               Your Learning Journey
             </h2>
@@ -561,7 +561,7 @@ export function Blogs() {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
           {/* Blog Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (

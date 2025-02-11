@@ -4,8 +4,8 @@ import { ChevronLeft, ChevronRight, Linkedin, Github } from 'lucide-react'
 
 // Import images
 import chhaviImage from '../../public/images/chhavi.jpeg'
-import parwathiImage from '../../public/images/parwathi.jpeg'
-import palakImage from '../../public/images/palak.jpeg'
+import gunjanImage from '../../public/images/gunjan.jpeg'
+import yoshitaImage from '../../public/images/yoshita.jpeg'
 import deepakImage from '../../public/images/deepak.jpeg'
 
 const teamMembers = [
@@ -14,7 +14,7 @@ const teamMembers = [
     name: "Deepak Gupta",
     role: "Team Lead & WEB Developer",
     image: deepakImage,
-    bio: "Building dreams with the Web and AI might, crafting Web apps that shine so bright. A 1st-year enthusist with a knack for Coding and Revolving the Web with AI , when i m not coding , i m either thinking about new ideas or about their implementation.",
+    bio: " Breaking Bugs & Building dreams 🫶🏻",
     linkedin: "https://www.linkedin.com/in/deepakgupta249",
     github: "https://www.github.com/divi-24",
     isLead: true
@@ -31,22 +31,22 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Palak Chadha",
-    role: "Full Stack developer",
-    image: palakImage,
-    bio: "Hi, I'm Palak Chadha! I'm a 1st-year student passionate about diving deep into AI and web development. while sharpening my Full Stack skills. . 🚀",
-    linkedin: "https://www.linkedin.com/in/palak-chadda-b737272b4/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    github: "https://github.com/PalakChadha27",
+    name: "Gunjan Pasricha",
+    role: "Front-End developer",
+    image: gunjanImage,
+    bio: "Hi, I'm Palak Chadha! I'm a 1st-year student passionate about diving deep into AI and web development. while sharpening my Front-End skills. . 🚀",
+    linkedin: "https://www.linkedin.com/in/gunjan-pasricha-abb237318",
+    github: "https://github.com/Gunjan246",
     isLead: true
   },
   {
     id: 4,
-    name: "Parwathi Jayaram",
-    role: "front-end developer and game developer",
-    image: parwathiImage,
-    bio: "I'm a game developer and programmer , who loves to learn and make different combinations of Web technologies and Ar/Vr & AI",
-    linkedin: "https://www.linkedin.com/in/parwathi-jayaram-18b596326/",
-    github: "https://github.com/Parwathi-Jayaram",
+    name: "Yoshita Singhal",
+    role: "Front-end developer and UI/UX Designer",
+    image: yoshitaImage,
+    bio: "I'm a ui/ux designer and programmer , who loves to learn and make different combinations of Web and UI/UX designs.",
+    linkedin: "https://www.linkedin.com/in/yoshita-singhal-262212329/",
+    github: "https://github.com/Yoshita09",
     isLead: true
   }
 ]

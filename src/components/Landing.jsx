@@ -189,16 +189,12 @@ export function Landing() {
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-1/2 pr-8">
                 <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  SheSync: Where Support Meets Empowerment for Every Cycle.
+                  SheSync: Your Journey to Confident Cycles
                 </h2>
                 <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                  Empowering women through personalized health tracking and
-                  education.
+                  Empowering Women One Cycle at a Time
                   </p>
-                  <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                  Explore, learn, and connect with a community that cares about
-                  your well-being.
-                </p>
+                  
                 <button
                   onClick={() => navigate("/Signup")}
                   className="bg-pink-600 dark:bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-700 dark:hover:bg-pink-600 transition-colors"

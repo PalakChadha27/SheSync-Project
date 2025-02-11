@@ -299,7 +299,7 @@ export function Chatbot() {
             />
             <SidebarLink
               icon={<Stethoscope size={20} />}
-              label="Expert Consultation"
+              label="ExpertConsultation"
               onClick={() => navigate("/consultations")}
             />
             <SidebarLink
