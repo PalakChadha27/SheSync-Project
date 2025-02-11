@@ -217,7 +217,6 @@ export function Landing() {
                 <LayoutDashboard className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/dashboard")}
                 >
                   Personalized Child Dashboard
                 </h4>
@@ -231,7 +230,7 @@ export function Landing() {
                 <GraduationCap className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/blogs")}
+                
                 >
                   Education Hub
                 </h4>
@@ -245,7 +244,7 @@ export function Landing() {
                 <ShoppingBag className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/Ecom")}
+                
                 >
                   Curated Shop
                 </h4>
@@ -259,7 +258,7 @@ export function Landing() {
                 <ActivitySquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/tracker")}
+
                 >
                   Health Tracker
                 </h4>
@@ -273,7 +272,7 @@ export function Landing() {
                 <Stethoscope className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/consultations")}
+                
                 >
                   Expert Consultations
                 </h4>
@@ -287,7 +286,7 @@ export function Landing() {
                 <Bot className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/ChatBot")}
+                  
                 >
                   Eve
                 </h4>
@@ -301,7 +300,7 @@ export function Landing() {
                 <UsersRound className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/")}
+                  
                 >
                   Parent Dashboard
                 </h4>
@@ -316,7 +315,7 @@ export function Landing() {
                 <HeartPulse className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/symptomsanalyzer")}
+                  
                 >
                   Health Lens
                 </h4>
@@ -330,7 +329,7 @@ export function Landing() {
                 <MessageSquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/forums")}
+                  
                 >
                   Forums
                 </h4>
@@ -343,7 +342,7 @@ export function Landing() {
                 <Handshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/forums")}
+                  
                 >
                   NGO's
                 </h4>
@@ -357,7 +356,7 @@ export function Landing() {
                 <HeartHandshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
-                  onClick={() => (window.location.href = "/forums")}
+                  
                 >
                   ShareJoy
                 </h4>

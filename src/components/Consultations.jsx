@@ -46,7 +46,7 @@ const doctors = [
     reviewCount: 124,
     availableDate: "2024-02-15",
     price: 150,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const doctors = [
     reviewCount: 98,
     availableDate: "2025-02-16",
     price: 180,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ const doctors = [
     reviewCount: 86,
     availableDate: "2025-02-17",
     price: 200,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 4,
@@ -76,7 +76,7 @@ const doctors = [
     reviewCount: 98,
     availableDate: "2025-03-10",
     price: 180,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 5,
@@ -86,7 +86,7 @@ const doctors = [
     reviewCount: 150,
     availableDate: "2025-01-25",
     price: 200,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ const doctors = [
     reviewCount: 110,
     availableDate: "2025-02-05",
     price: 120,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 7,
@@ -106,7 +106,7 @@ const doctors = [
     reviewCount: 102,
     availableDate: "2025-02-20",
     price: 140,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 8,
@@ -116,7 +116,7 @@ const doctors = [
     reviewCount: 90,
     availableDate: "2025-03-01",
     price: 170,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 9,
@@ -126,7 +126,7 @@ const doctors = [
     reviewCount: 140,
     availableDate: "2025-01-30",
     price: 220,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 10,
@@ -136,7 +136,7 @@ const doctors = [
     reviewCount: 86,
     availableDate: "2025-02-18",
     price: 160,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 11,
@@ -146,7 +146,7 @@ const doctors = [
     reviewCount: 75,
     availableDate: "2025-02-22",
     price: 130,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
   {
     id: 12,
@@ -156,7 +156,7 @@ const doctors = [
     reviewCount: 92,
     availableDate: "2025-03-05",
     price: 180,
-    image: "/public/images/women.jpeg",
+    image: "/images/women.jpeg",
   },
 ];
 
