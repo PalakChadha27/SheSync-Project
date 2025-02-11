@@ -34,7 +34,7 @@ const teamMembers = [
     name: "Gunjan Pasricha",
     role: "Front-End developer",
     image: gunjanImage,
-    bio: "Hi, I'm Palak Chadha! I'm a 1st-year student passionate about diving deep into AI and web development. while sharpening my Front-End skills. . 🚀",
+    bio: "Hi, I'm Gunjan! I'm a 1st-year student passionate about diving deep into AI and web development. while sharpening my Front-End skills. . 🚀",
     linkedin: "https://www.linkedin.com/in/gunjan-pasricha-abb237318",
     github: "https://github.com/Gunjan246",
     isLead: true
