@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
   HeartPulse,
@@ -22,6 +23,13 @@ import {
   HeartHandshake,
   Gamepad2,
   Handshake,
+  Bookmark,
+  Bell,
+  CheckCircle,
+  AlertCircle,
+  User,
+  XCircle,
+  ChevronDown,
 } from "lucide-react";
 
 export function Forum() {
@@ -32,6 +40,17 @@ export function Forum() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [activeTab, setActiveTab] = useState("forums");
   const [searchTerm, setSearchTerm] = useState("");
+  const [notifications, setNotifications] = useState([
+    { id: 1, text: "New reply on your post", read: false },
+    { id: 2, text: "3 new messages in Women's Health", read: false },
+  ]);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [sortBy, setSortBy] = useState("newest");
+  const [filterBy, setFilterBy] = useState("all");
+  const [solvedPosts, setSolvedPosts] = useState([1]);
+  const [bookmarks, setBookmarks] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -55,9 +74,39 @@ export function Forum() {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    // Implement search logic here
   };
 
+  const handleLike = (postId) => {
+    setRecentPosts(posts =>
+      posts.map(post =>
+        post.id === postId ? { ...post, likes: post.likes + 1 } : post
+      )
+    );
+  };
+
+  const handleBookmark = (postId) => {
+    setBookmarks(prev =>
+      prev.includes(postId)
+        ? prev.filter(id => id !== postId)
+        : [...prev, postId]
+    );
+  };
+
+  const markNotificationRead = (id) => {
+    setNotifications(notifications =>
+      notifications.map(n => (n.id === id ? { ...n, read: true } : n))
+    );
+  };
+
+  const toggleSolved = (postId) => {
+    setSolvedPosts(prev =>
+      prev.includes(postId)
+        ? prev.filter(id => id !== postId)
+        : [...prev, postId]
+    );
+  };
+
+  // Data arrays
   const forums = [
     { id: 1, name: "Women's Health", members: 1200, posts: 5600 },
     { id: 2, name: "Fitness & Nutrition", members: 980, posts: 4200 },
@@ -96,6 +145,51 @@ export function Forum() {
     "Fertility Tracking Apps",
     "Menopause Symptoms",
   ];
+
+  // Filtered and sorted data
+  const filteredForums = forums.filter(forum => {
+    if (filterBy === "large") return forum.members > 1000;
+    if (filterBy === "active") return forum.posts > 5000;
+    return true;
+  });
+
+  const sortedPosts = [...recentPosts]
+    .sort((a, b) => {
+      if (sortBy === "likes") return b.likes - a.likes;
+      if (sortBy === "comments") return b.comments - a.comments;
+      return b.id - a.id;
+    })
+    .filter(post =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+  // Animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const ProfileMenu = () => (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1"
+    >
+      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+        <User className="mr-3 h-5 w-5" /> Profile
+      </button>
+      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+        <Bookmark className="mr-3 h-5 w-5" /> Bookmarks
+      </button>
+      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+        <CheckCircle className="mr-3 h-5 w-5" /> My Solutions
+      </button>
+      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+        <XCircle className="mr-3 h-5 w-5" /> Logout
+      </button>
+    </motion.div>
+  );
 
   return (
     <div className={`flex h-screen ${darkMode ? "dark" : ""}`}>
@@ -163,15 +257,15 @@ export function Forum() {
               onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
             <SidebarLink
-                        icon={<Gamepad2 size={20} />}
-                        label="Bliss"
-                        onClick={() =>
-                          window.open(
-                            "https://she-syncgame.vercel.app/",
-                            "_blank"
-                          )
-                        }
-                      />
+              icon={<Gamepad2 size={20} />}
+              label="Bliss"
+              onClick={() =>
+                window.open(
+                  "https://she-syncgame.vercel.app/",
+                  "_blank"
+                )
+              }
+            />
             <SidebarLink
               icon={<Handshake size={20} />}
               label="NGO's"
@@ -210,21 +304,80 @@ export function Forum() {
       >
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
-          <div className="flex justify-between items-center"
-          style={{ display: "flex", justifyContent: "centre", alignItems: "center",height:"40px" }}>
+          <div className="flex justify-between items-center">
             <h2 className="text-3xl font-bold text-pink-600 dark:text-pink-400">
               Community Forums
             </h2>
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
-            >
-              {darkMode ? (
-                <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
-              ) : (
-                <Moon className="h-5 w-5 text-gray-800 dark:text-gray-200" />
-              )}
-            </button>
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <button
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="p-2 relative rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                >
+                  <Bell className="h-6 w-6" />
+                  {notifications.some(n => !n.read) && (
+                    <span className="absolute top-0 right-0 h-3 w-3 bg-red-500 rounded-full" />
+                  )}
+                </button>
+                <AnimatePresence>
+                  {showNotifications && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2"
+                    >
+                      <div className="px-4 py-2 font-semibold border-b dark:border-gray-700">
+                        Notifications
+                      </div>
+                      {notifications.map(notification => (
+                        <div
+                          key={notification.id}
+                          className={`px-4 py-2 text-sm flex items-center justify-between ${
+                            !notification.read ? "bg-pink-50 dark:bg-gray-700" : ""
+                          }`}
+                        >
+                          <span>{notification.text}</span>
+                          {!notification.read && (
+                            <button
+                              onClick={() => markNotificationRead(notification.id)}
+                              className="text-pink-600 hover:text-pink-700"
+                            >
+                              Mark read
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <div className="relative">
+                <button
+                  onClick={() => setShowProfileMenu(!showProfileMenu)}
+                  className="flex items-center space-x-2"
+                >
+                  <img
+                    src="/images/women.jpeg"
+                    alt="Profile"
+                    className="h-10 w-10 rounded-full"
+                  />
+                </button>
+                <AnimatePresence>
+                  {showProfileMenu && <ProfileMenu />}
+                </AnimatePresence>
+              </div>
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+              >
+                {darkMode ? (
+                  <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+                ) : (
+                  <Moon className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Search and Filters */}
@@ -250,6 +403,38 @@ export function Forum() {
               >
                 Recent Posts
               </button>
+              <div className="relative">
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="flex items-center px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700"
+                >
+                  <Filter className="mr-2 h-4 w-4" />
+                  Filters
+                  <ChevronDown className="ml-2 h-4 w-4" />
+                </button>
+                {showFilters && (
+                  <div className="absolute z-10 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2">
+                    <select
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      className="w-full bg-transparent p-2 text-sm"
+                    >
+                      <option value="newest">Newest First</option>
+                      <option value="likes">Most Likes</option>
+                      <option value="comments">Most Comments</option>
+                    </select>
+                    <select
+                      value={filterBy}
+                      onChange={(e) => setFilterBy(e.target.value)}
+                      className="w-full bg-transparent p-2 text-sm mt-2"
+                    >
+                      <option value="all">All Forums</option>
+                      <option value="large">Large Communities</option>
+                      <option value="active">Active Communities</option>
+                    </select>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="flex items-center space-x-2">
               <div className="relative">
@@ -265,46 +450,81 @@ export function Forum() {
                   onChange={handleSearch}
                 />
               </div>
-              <button className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600">
-                <Filter size={20} />
-              </button>
             </div>
           </div>
 
           {/* Forums List */}
           {activeTab === "forums" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {forums.map((forum) => (
-                <div
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.1 } },
+              }}
+            >
+              {filteredForums.map((forum) => (
+                <motion.div
                   key={forum.id}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+                  variants={cardVariants}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                 >
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
                     {forum.name}
                   </h3>
                   <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                     <span className="flex items-center">
-                      <Users size={16} className="mr-1" /> {forum.members}{" "}
-                      members
+                      <Users size={16} className="mr-1" /> {forum.members} members
                     </span>
                     <span className="flex items-center">
-                      <MessageSquare size={16} className="mr-1" /> {forum.posts}{" "}
-                      posts
+                      <MessageSquare size={16} className="mr-1" /> {forum.posts} posts
                     </span>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Recent Posts */}
           {activeTab === "posts" && (
-            <div className="space-y-6">
-              {recentPosts.map((post) => (
-                <div
+            <motion.div
+              className="space-y-6"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.1 } },
+              }}
+            >
+              {sortedPosts.map((post) => (
+                <motion.div
                   key={post.id}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+                  variants={cardVariants}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md relative group"
                 >
+                  <div className="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      onClick={() => toggleSolved(post.id)}
+                      className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      {solvedPosts.includes(post.id) ? (
+                        <CheckCircle className="h-5 w-5 text-green-500" />
+                      ) : (
+                        <AlertCircle className="h-5 w-5 text-yellow-500" />
+                      )}
+                    </button>
+                    <button
+                      onClick={() => handleBookmark(post.id)}
+                      className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <Bookmark
+                        className={`h-5 w-5 ${
+                          bookmarks.includes(post.id)
+                            ? "text-pink-600 fill-current"
+                            : "text-gray-400"
+                        }`}
+                      />
+                    </button>
+                  </div>
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
                     {post.title}
                   </h3>
@@ -312,21 +532,33 @@ export function Forum() {
                     By {post.author}
                   </p>
                   <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                    <button
+                      onClick={() => handleLike(post.id)}
+                      className="flex items-center hover:text-pink-600 transition-colors"
+                    >
+                      <Heart
+                        className={`h-5 w-5 mr-1 ${
+                          post.likes > 0 ? "text-pink-600 fill-current" : ""
+                        }`}
+                      />
+                      {post.likes} likes
+                    </button>
                     <span className="flex items-center">
-                      <Heart size={16} className="mr-1" /> {post.likes} likes
-                    </span>
-                    <span className="flex items-center">
-                      <MessageSquare size={16} className="mr-1" />{" "}
+                      <MessageSquare className="h-5 w-5 mr-1" />
                       {post.comments} comments
                     </span>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Trending Topics */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+          >
             <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
               Trending Topics
             </h3>
@@ -334,7 +566,7 @@ export function Forum() {
               {trendingTopics.map((topic, index) => (
                 <li
                   key={index}
-                  className="flex items-center text-gray-700 dark:text-gray-300"
+                  className="flex items-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-md cursor-pointer transition-colors"
                 >
                   <TrendingUp
                     size={16}
@@ -344,7 +576,7 @@ export function Forum() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </main>
     </div>
@@ -353,7 +585,9 @@ export function Forum() {
 
 const SidebarLink = ({ icon, label, onClick, active = false }) => {
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       onClick={onClick}
       className={`flex items-center space-x-2 w-full px-2 py-2 rounded-lg transition-colors ${
         active
@@ -363,6 +597,6 @@ const SidebarLink = ({ icon, label, onClick, active = false }) => {
     >
       {icon}
       <span>{label}</span>
-    </button>
+    </motion.button>
   );
 };
