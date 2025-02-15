@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
-import { Activity, Bell, Brain, Calendar, ChevronRight, FileText, Heart, Mail, MessageCircle, Moon, Phone, Pill, Play, Plus, Sun, User, Sparkles, TrendingUp, Target, Clock, Award, BarChart2 } from 'lucide-react'
+import { Activity, Bell, Brain, Calendar, ChevronRight, FileText, Heart, Mail, MessageCircle, Moon, Phone, Pill, Play, Plus, Sun, User, Sparkles, TrendingUp, Target, Gamepad2, Clock, Award, BarChart2 } from 'lucide-react'
 
 // Animation variants defined inline
 const pageTransition = {

@@ -26,6 +26,7 @@ import {
   Star,
   Package,
   Droplet,
+  Gamepad2,
   Zap,
   Leaf,
   X,
@@ -439,6 +440,16 @@ export function Ecom() {
             icon={<HeartHandshake size={20} />}
             label="ShareJoy"
             onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
+          />
+          <SidebarLink
+            icon={<Gamepad2 size={20} />}
+            label="Bliss"
+            onClick={() =>
+              window.open(
+                "https://she-syncgame.vercel.app/",
+                "_blank"
+              )
+            }
           />
           <SidebarLink
             icon={<Handshake size={20} />}

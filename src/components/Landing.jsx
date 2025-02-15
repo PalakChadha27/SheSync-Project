@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   MessageSquare,
   HeartPulse,
+  Gamepad2,
   Home,
   GraduationCap,
   ShoppingBag,
@@ -126,6 +127,16 @@ export function Landing() {
                 "https://thepadproject.org/donate/"
                 )  
               }
+          />
+          <SidebarLink
+            icon={<Gamepad2 size={20} />}
+            label="Bliss"
+            onClick={() =>
+              window.open(
+                "https://she-syncgame.vercel.app/",
+                "_blank"
+              )
+            }
           />
           <SidebarLink
             icon={<Handshake size={20} />}

@@ -8,6 +8,7 @@ import {
   Trash2,
   LayoutDashboard,
   ActivitySquare,
+  Gamepad2,
   Loader,
   GraduationCap,
   Bot,
@@ -323,6 +324,16 @@ export function Chatbot() {
               label="ShareJoy"
               onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
+            <SidebarLink
+            icon={<Gamepad2 size={20} />}
+            label="Bliss"
+            onClick={() =>
+              window.open(
+                "https://she-syncgame.vercel.app/",
+                "_blank"
+              )
+            }
+          />
             <SidebarLink
               icon={<Handshake size={20} />}
               label="NGO's"

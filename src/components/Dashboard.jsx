@@ -24,6 +24,7 @@ import {
   Frown,
   Meh,
   ThermometerSun,
+  Gamepad2,
   Zap,
   Coffee,
   Dumbbell,
@@ -411,6 +412,16 @@ export function Dashboard() {
               label="ShareJoy"
               onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
+            <NavItem
+                        icon={<Gamepad2 size={20} />}
+                        label="Bliss"
+                        onClick={() =>
+                          window.open(
+                            "https://she-syncgame.vercel.app/",
+                            "_blank"
+                          )
+                        }
+                      />
             <NavItem
               icon={<Handshake size={20} />}
               label="NGO's"

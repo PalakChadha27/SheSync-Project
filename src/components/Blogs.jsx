@@ -13,6 +13,7 @@ import {
   Moon,
   Handshake,
   ChevronDown,
+  Gamepad2,
   ChevronUp,
   Heart,
   Sun,
@@ -410,6 +411,16 @@ export function Blogs() {
             label="ShareJoy"
             onClick={() => navigate("/")}
             active
+          />
+          <SidebarLink
+            icon={<Gamepad2 size={20} />}
+            label="Bliss"
+            onClick={() =>
+              window.open(
+                "https://she-syncgame.vercel.app/",
+                "_blank"
+              )
+            }
           />
           <SidebarLink
             icon={<Handshake size={20} />}

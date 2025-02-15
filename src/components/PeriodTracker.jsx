@@ -7,6 +7,7 @@ import {
   HeartPulse,
   Smile,
   Angry,
+  Gamepad2,
   MessageSquare,
   Coffee,
   HeartHandshake,
@@ -424,6 +425,16 @@ export function PeriodTracker() {
               label="ShareJoy"
               onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
+            <SidebarLink
+            icon={<Gamepad2 size={20} />}
+            label="Bliss"
+            onClick={() =>
+              window.open(
+                "https://she-syncgame.vercel.app/",
+                "_blank"
+              )
+            }
+          />
             <SidebarLink
               icon={<Handshake size={20} />}
               label="NGO's"
