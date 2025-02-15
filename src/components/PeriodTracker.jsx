@@ -422,7 +422,7 @@ export function PeriodTracker() {
             <SidebarLink
               icon={<HeartHandshake size={20} />}
               label="ShareJoy"
-              onClick={() => window.open("https://padforward.us/", "_blank")}
+              onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
             <SidebarLink
               icon={<Handshake size={20} />}

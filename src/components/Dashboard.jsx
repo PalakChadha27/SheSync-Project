@@ -409,7 +409,7 @@ export function Dashboard() {
             <NavItem
               icon={<HeartHandshake size={20} />}
               label="ShareJoy"
-              onClick={() => window.open("https://padforward.us/", "_blank")}
+              onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
             <NavItem
               icon={<Handshake size={20} />}

@@ -30,7 +30,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-const genAI = new GoogleGenerativeAI("AIzaSyAc1l4zjH_fiCzprd5pE77A9ikQtA-xZuc");
+const genAI = new GoogleGenerativeAI("AIzaSyDC_nwnZggf8CYID3qvJfazEE8KBnqd9Ro");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const popularEmojis = [
@@ -321,7 +321,7 @@ export function Chatbot() {
             <SidebarLink
               icon={<HeartHandshake size={20} />}
               label="ShareJoy"
-              onClick={() => window.open("https://padforward.us/", "_blank")}
+              onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
             />
             <SidebarLink
               icon={<Handshake size={20} />}

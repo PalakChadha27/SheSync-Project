@@ -123,7 +123,7 @@ export function Landing() {
             label="ShareJoy"
             onClick={() => 
               window.open(
-                "https://padforward.us/"
+                "https://thepadproject.org/donate/"
                 )  
               }
           />
