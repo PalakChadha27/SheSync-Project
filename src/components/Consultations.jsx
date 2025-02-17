@@ -87,30 +87,43 @@ export function Consultations() {
       setSearchError("");
       
       let searchLocation = location || userLocation;
-      if (!location && searchQuery) {
+      
+      // If we have a search query, geocode it
+      if (searchQuery && !location) {
         const geocoder = new window.google.maps.Geocoder();
         const results = await new Promise((resolve, reject) => {
           geocoder.geocode({ address: searchQuery }, (results, status) => {
             status === "OK" ? resolve(results) : reject(status);
           });
         });
+        
+        if (results.length === 0) {
+          setSearchError("Location not found");
+          setIsSearching(false);
+          return;
+        }
+        
         searchLocation = results[0].geometry.location;
         setUserLocation(searchLocation);
-        setMapCenter(searchLocation);
+        setMapCenter({ lat: searchLocation.lat(), lng: searchLocation.lng() });
       }
 
-      if (!searchLocation) return;
+      if (!searchLocation) {
+        setSearchError("Please enable location access or enter a location");
+        setIsSearching(false);
+        return;
+      }
 
       const service = new window.google.maps.places.PlacesService(map);
       const request = {
         location: searchLocation,
         radius: 50000,
-        keyword: selectedSpecialization || "gynecologist", 
-        type: "health",
+        keyword: "gynecologist",
+        type: "doctor",
       };
 
       service.nearbySearch(request, (results, status) => {
-        if (status === "OK") {
+        if (status === "OK" && results.length > 0) {
           const newMarkers = results.map(place => ({
             id: place.place_id,
             name: place.name,
@@ -152,10 +165,16 @@ export function Consultations() {
           };
           setUserLocation(location);
           setMapCenter(location);
+          setSearchQuery(""); // Clear search query when using current location
           handleSearch(location);
         },
-        (error) => console.error("Error fetching location:", error)
+        (error) => {
+          console.error("Error fetching location:", error);
+          setSearchError("Please enable location access to use this feature");
+        }
       );
+    } else {
+      setSearchError("Geolocation is not supported by this browser");
     }
   };
 
@@ -230,9 +249,11 @@ export function Consultations() {
     </div>
   );
 
+  // ... (Keep the DoctorCard and DoctorCardSkeleton components the same as before)
+
   return (
     <div className={`flex h-screen ${darkMode ? "dark" : ""}`}>
-      {/* Sidebar */}
+      {/* Sidebar (keep the same as before) */}
       <aside
               className={`bg-pink-100 dark:bg-gray-800 w-64 min-h-screen p-4 fixed transition-all duration-300 ease-in-out ${
                 sidebarVisible ? "translate-x-0" : "-translate-x-full"
@@ -321,12 +342,13 @@ export function Consultations() {
                 />
               </div>
             </aside>
+      {/* Main content */}
 
-      {/* Main Content */}
       <main className={`flex-1 p-8 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${
         sidebarVisible ? "ml-64" : "ml-0"
       }`}>
         <div className="container mx-auto py-8 px-4">
+          {/* Header (keep the same as before) */}
           <div className="flex justify-between items-center mb-8">
             <motion.h2
               className="text-4xl font-bold text-center text-pink-600 dark:text-pink-400"
@@ -344,7 +366,8 @@ export function Consultations() {
             </button>
           </div>
 
-          {/* Enhanced Map Section */}
+
+          {/* Enhanced Search Section */}
           {isLoaded && (
             <motion.div
               className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-8"
@@ -355,40 +378,59 @@ export function Consultations() {
               <h2 className="text-2xl font-semibold mb-4 dark:text-white">
                 Find Nearby Gynecologists
               </h2>
+              
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <div className="flex-1 relative">
-                  <div className="relative">
+                  <div className="relative flex items-center">
                     <input
                       id="search"
                       type="text"
-                      placeholder=" use Near Me"
+                      placeholder="Enter location or 'Near Me'"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                      className="w-full pl-3 pr-10 py-2 text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full pl-3 pr-24 py-2 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-gray-700"
                     />
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-8 top-1/2 -translate-y-1/2 text-gray-500"
-                    >
-                      ×
-                    </button>
+                    <div className="absolute right-0 flex space-x-1">
+                      <button
+                        onClick={() => handleSearch()}
+                        disabled={isSearching}
+                        className="bg-pink-500 text-white px-4 py-2 rounded-r-md hover:bg-pink-600 transition-colors duration-300 disabled:opacity-50"
+                      >
+                        {isSearching ? 'Searching...' : 'Search'}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              {/* <button
-                  onClick={handleSearch}
-                  className="bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 transition-colors duration-300"
-                >
-                  Search
-                </button>*/}
+                
                 <button
                   onClick={getUserLocation}
-                  className="bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 transition-colors duration-300"
+                  disabled={isSearching}
+                  className="bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 transition-colors duration-300 disabled:opacity-50"
                 >
+                  <MapPin className="inline-block mr-2 h-4 w-4" />
                   Near Me
                 </button>
               </div>
-              {searchError && <div className="text-red-500 mb-4">{searchError}</div>}
+
+              {searchError && (
+                <div className="text-red-500 mb-4 flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 mr-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  {searchError}
+                </div>
+              )}
+
               <div className="h-96 w-full rounded-lg overflow-hidden relative">
                 {isSearching && (
                   <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
@@ -424,7 +466,7 @@ export function Consultations() {
             </motion.div>
           )}
 
-          {/* Doctors List */}
+          {/* Doctors List (keep the same as before) */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {isSearching ? (
               Array(6).fill().map((_, i) => <DoctorCardSkeleton key={i} />)
@@ -435,7 +477,7 @@ export function Consultations() {
                 No doctors found. Try adjusting your search criteria.
               </div>
             )}
-          </div>
+</div>
         </div>
       </main>
     </div>
