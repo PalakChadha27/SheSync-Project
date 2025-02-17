@@ -409,8 +409,12 @@ export function Blogs() {
           <SidebarLink
             icon={<HeartHandshake size={20} />}
             label="ShareJoy"
-            onClick={() => navigate("/")}
-            active
+            onClick={() => 
+              window.open(
+                "https://thepadproject.org/donate/"
+                )  
+              }
+            
           />
           <SidebarLink
             icon={<Gamepad2 size={20} />}
@@ -425,7 +429,12 @@ export function Blogs() {
           <SidebarLink
             icon={<Handshake size={20} />}
             label="NGO's"
-            onClick={() => navigate("/")}
+            onClick={() =>
+              window.open(
+                "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
+                "_blank"
+              )
+            }
           />
         </nav>
       </aside>

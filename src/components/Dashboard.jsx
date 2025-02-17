@@ -365,6 +365,7 @@ export function Dashboard() {
               icon={<LayoutDashboard size={20} />}
               label="Dashboard"
               onClick={() => navigate("/dashboard")}
+              active
             />
             <NavItem
               icon={<Home size={20} />}
@@ -405,7 +406,7 @@ export function Dashboard() {
               icon={<MessageSquare size={20} />}
               label="Forums"
               onClick={() => navigate("/forums")}
-              active
+              
             />
             <NavItem
               icon={<HeartHandshake size={20} />}

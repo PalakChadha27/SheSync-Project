@@ -83,6 +83,7 @@ export function Landing() {
             icon={<Home size={20} />}
             label="Home"
             onClick={() => navigate("/")}
+            active
           />
           <SidebarLink
             icon={<GraduationCap size={20} />}

@@ -595,6 +595,7 @@ export function SymptomAnalysis() {
             icon={<HeartPulse size={20} />}
             label="HealthLens"
             onClick={() => navigate("/symptomsanalyzer")}
+            active
           />
           <SidebarLink
             icon={<MessageSquare size={20} />}
@@ -602,25 +603,30 @@ export function SymptomAnalysis() {
             onClick={() => navigate("/forums")}
           />
           <SidebarLink
-            icon={<HeartHandshake size={20} />}
-            label="ShareJoy"
-            onClick={() => navigate("/")}
-          />
-          <SidebarLink
-                      icon={<Gamepad2 size={20} />}
-                      label="Bliss"
-                      onClick={() =>
-                        window.open(
-                          "https://she-syncgame.vercel.app/",
-                          "_blank"
-                        )
-                      }
-                    />
-          <SidebarLink
-                      icon={<Handshake  size={20} />}
-                      label="NGO's"
-                      onClick={() => navigate("/")}
-                    />
+                        icon={<HeartHandshake size={20} />}
+                        label="ShareJoy"
+                        onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
+                      />
+                      <SidebarLink
+                        icon={<Gamepad2 size={20} />}
+                        label="Bliss"
+                        onClick={() =>
+                          window.open(
+                            "https://she-syncgame.vercel.app/",
+                            "_blank"
+                          )
+                        }
+                      />
+                      <SidebarLink
+                        icon={<Handshake size={20} />}
+                        label="NGO's"
+                        onClick={() =>
+                          window.open(
+                            "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
+                            "_blank"
+                          )
+                        }
+                      />
         </div>
       </aside>
 
