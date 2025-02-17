@@ -160,19 +160,21 @@ export function Consultations() {
   };
 
   // UI Components
-  const SidebarLink = ({ icon, label, path, active = false }) => (
-    <button
-      onClick={() => navigate(path)}
-      className={`flex items-center space-x-2 w-full px-2 py-2 rounded-lg transition-colors ${
-        active ? "bg-pink-200 dark:bg-pink-900 text-pink-800 dark:text-pink-200" 
-        : "text-gray-900 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700"
-      }`}
-    >
-      {icon}
-      <span>{label}</span>
-    </button>
-  );
-
+  const SidebarLink = ({ icon, label, onClick, active = false }) => {
+    return (
+      <button
+        onClick={onClick}
+        className={`flex items-center space-x-2 w-full px-2 py-2 rounded-lg transition-colors ${
+          active
+            ? "bg-pink-200 dark:bg-pink-900 text-pink-800 dark:text-pink-200"
+            : "text-gray-900 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700"
+        }`}
+      >
+        {icon}
+        <span>{label}</span>
+      </button>
+    );
+  };
   const DoctorCard = ({ doctor }) => (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -231,78 +233,94 @@ export function Consultations() {
   return (
     <div className={`flex h-screen ${darkMode ? "dark" : ""}`}>
       {/* Sidebar */}
-      <aside className={`bg-pink-100 dark:bg-gray-800 w-64 min-h-screen p-4 fixed transition-all duration-300 ease-in-out ${
-        sidebarVisible ? "translate-x-0" : "-translate-x-full"
-      }`} style={{ zIndex: 40 }}>
-        <div className="px-4 py-4 flex flex-col space-y-2">
-          <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">
-            SheSync
-          </h1>
-          <SidebarLink
-            icon={<LayoutDashboard size={20} />}
-            label="Dashboard"
-            path="/dashboard"
-          />
-          <SidebarLink icon={<Home size={20} />} label="Home" path="/" />
-          <SidebarLink
-            icon={<GraduationCap size={20} />}
-            label="Education"
-            path="/blogs"
-          />
-          <SidebarLink
-            icon={<ShoppingBag size={20} />}
-            label="Shop"
-            path="/Ecom"
-          />
-          <SidebarLink
-            icon={<ActivitySquare size={20} />}
-            label="Track Your Health"
-            path="/tracker"
-          />
-          <SidebarLink
-            icon={<Stethoscope size={20} />}
-            label="Expert Consultation"
-            path="/consultations"
-            active
-          />
-          <SidebarLink icon={<Bot size={20} />} label="Eve" path="/ChatBot" />
-          <SidebarLink
-            icon={<HeartPulse size={20} />}
-            label="HealthLens"
-            path="/symptomsanalyzer"
-          />
-          <SidebarLink
-            icon={<MessageSquare size={20} />}
-            label="Forums"
-            path="/forums"
-          />
-          <SidebarLink
-            icon={<HeartHandshake size={20} />}
-            label="ShareJoy"
-            onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
-          />
-          <SidebarLink
-                      icon={<Gamepad2 size={20} />}
-                      label="Bliss"
-                      onClick={() =>
-                        window.open(
-                          "https://she-syncgame.vercel.app/",
-                          "_blank"
-                        )
-                      }
-                    />
-          <SidebarLink
-            icon={<Handshake size={20} />}
-            label="NGO's"
-            onClick={() =>
-              window.open(
-                "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
-                "_blank"
-              )
-            }
-          />
-        </div>
-      </aside>
+      <aside
+              className={`bg-pink-100 dark:bg-gray-800 w-64 min-h-screen p-4 fixed transition-all duration-300 ease-in-out ${
+                sidebarVisible ? "translate-x-0" : "-translate-x-full"
+              }`}
+              style={{ zIndex: 40 }}
+            >
+              <div className="px-4 py-4 flex flex-col space-y-2">
+                <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 ">
+                  SheSync
+                </h1>
+                <SidebarLink
+                  icon={<LayoutDashboard size={20} />}
+                  label="Dashboard"
+                  onClick={() => navigate("/dashboard")}
+                />
+                <SidebarLink
+                  icon={<Home size={20} />}
+                  label="Home"
+                  onClick={() => navigate("/")}
+                  
+                />
+                <SidebarLink
+                  icon={<GraduationCap size={20} />}
+                  label="Education"
+                  onClick={() => navigate("/blogs")}
+                />
+                <SidebarLink
+                  icon={<ShoppingBag size={20} />}
+                  label="Shop"
+                  onClick={() => navigate("/Ecom")}
+                />
+                <SidebarLink
+                  icon={<ActivitySquare size={20} />}
+                  label="Track Your Health"
+                  onClick={() => navigate("/tracker")}
+                />
+                <SidebarLink
+                  icon={<Stethoscope size={20} />}
+                  label="Expert Consultation"
+                  onClick={() => navigate("/consultations")}
+                  active
+                />
+                <SidebarLink
+                  icon={<Bot size={20} />}
+                  label="Eve"
+                  onClick={() => navigate("/ChatBot")}
+                />
+                <SidebarLink
+                  icon={<HeartPulse size={20} />}
+                  label="HealthLens"
+                  onClick={() => navigate("/symptomsanalyzer")}
+                />
+                <SidebarLink
+                  icon={<MessageSquare size={20} />}
+                  label="Forums"
+                  onClick={() => navigate("/forums")}
+                />
+                <SidebarLink
+                  icon={<HeartHandshake size={20} />}
+                  label="ShareJoy"
+                  onClick={() => 
+                    window.open(
+                      "https://thepadproject.org/donate/"
+                      )  
+                    }
+                />
+                <SidebarLink
+                  icon={<Gamepad2 size={20} />}
+                  label="Bliss"
+                  onClick={() =>
+                    window.open(
+                      "https://she-syncgame.vercel.app/",
+                      "_blank"
+                    )
+                  }
+                />
+                <SidebarLink
+                  icon={<Handshake size={20} />}
+                  label="NGO's"
+                  onClick={() =>
+                    window.open(
+                      "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
+                      "_blank"
+                    )
+                  }
+                />
+              </div>
+            </aside>
 
       {/* Main Content */}
       <main className={`flex-1 p-8 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${
