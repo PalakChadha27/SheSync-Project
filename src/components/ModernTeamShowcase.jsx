@@ -3,9 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Linkedin, Github } from 'lucide-react'
 
 // Import images
-import chhaviImage from '../../public/images/chhavi.jpeg'
-import gunjanImage from '../../public/images/gunjan.jpeg'
-import yoshitaImage from '../../public/images/yoshita.jpeg'
+import palakImage from '../../public/images/palak1.jpeg'
+import vibhorImage from '../../public/images/vibhor.jpeg'
 import deepakImage from '../../public/images/deepak.jpeg'
 
 const teamMembers = [
@@ -21,32 +20,22 @@ const teamMembers = [
   },
   {
     id: 2,
-    name: "Chhavi Bhalla",
+    name: "Palak Chadha",
     role: "Front-End developer",
-    image: chhaviImage,
-    bio: "An undergrad refining skills with Front-End Development in hand, who loves to design the web for a better user experience.",
-    linkedin: "https://www.linkedin.com/in/chhavi-bhalla-6b7985319",
-    github: "https://github.com/chhavibhalla",
+    image: palakImage,
+    bio: "Hi, I'm Palak! I'm a novice who is passionate about diving deep into AI/ML and Web Development while sharpening my Front-End skills. . 🚀",
+    linkedin: "www.linkedin.com/in/palak-chadda-b737272b4",
+    github: "https://github.com/palakchadha27",
     isLead: true
   },
   {
     id: 3,
-    name: "Gunjan Pasricha",
-    role: "Front-End developer",
-    image: gunjanImage,
-    bio: "Hi, I'm Gunjan! I'm a 1st-year student passionate about diving deep into AI and web development. while sharpening my Front-End skills. . 🚀",
-    linkedin: "https://www.linkedin.com/in/gunjan-pasricha-abb237318",
-    github: "https://github.com/Gunjan246",
-    isLead: true
-  },
-  {
-    id: 4,
-    name: "Yoshita Singhal",
-    role: "Front-end developer and UI/UX Designer",
-    image: yoshitaImage,
-    bio: "I'm a ui/ux designer and programmer , who loves to learn and make different combinations of Web and UI/UX designs.",
-    linkedin: "https://www.linkedin.com/in/yoshita-singhal-262212329/",
-    github: "https://github.com/Yoshita09",
+    name: "Vibhor Sharma",
+    role: "Back-End developer",
+    image: vibhorImage,
+    bio: "Hi, I'm Vibhor! Passionate about Backend",
+    linkedin: "https://www.linkedin.com/in/vibhor-sharma-639174259 ",
+    github: "https://github.com/VibhorSharma199",
     isLead: true
   }
 ]

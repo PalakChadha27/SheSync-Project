@@ -729,9 +729,6 @@ export function Landing() {
                     <h3 className="text-2xl font-bold text-white mb-2">
                       Team WEB PIONEERS
                     </h3>
-                    <p className="text-gray-400">
-                      Building for HACK-IT-UP 
-                    </p>
                   </div>
                   <div className="bg-green-500/20 px-3 py-1 rounded-full flex items-center">
                     <span className="text-green-400 text-sm font-medium">

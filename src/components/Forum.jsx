@@ -108,10 +108,10 @@ export function Forum() {
 
   // Data arrays
   const forums = [
-    { id: 1, name: "Women's Health", members: 1200, posts: 5600 },
-    { id: 2, name: "Fitness & Nutrition", members: 980, posts: 4200 },
-    { id: 3, name: "Mental Wellness", members: 850, posts: 3800 },
-    { id: 4, name: "Reproductive Health", members: 720, posts: 3100 },
+    { id: 1, name: (<a href="https://samawomenshealth.in/">Women's Health</a>), members: 1200, posts: 5600,},
+    { id: 2, name: (<a href="https://theskillcollective.com/womens-health">Fitness & Nutrition</a>), members: 980, posts: 4200,},
+    { id: 3, name: (<a href="https://www.betterhealth.vic.gov.au/campaigns/womens-sexual-and-reproductive-health">Mental Wellness</a>), members: 850, posts: 3800,},
+    { id: 4, name: (<a href="https://www.meetup.com/find/?source=GROUPS&keywords=Women%27s%20Fitness">Reproductive Health</a>), members: 720, posts: 3100,},
   ];
 
   const recentPosts = [
@@ -139,11 +139,11 @@ export function Forum() {
   ];
 
   const trendingTopics = [
-    "Menstrual Cup Usage",
-    "Hormone Balancing Foods",
-    "Endometriosis Awareness",
-    "Fertility Tracking Apps",
-    "Menopause Symptoms",
+    (<a href="https://www.healthline.com/health/womens-health/menstrual-cup">Menstrual Cup Usage</a>),
+    (<a href="https://www.healthline.com/nutrition/balance-hormones">Hormone Balancing Foods</a>),
+    (<a href="https://www.fda.gov/consumers/knowledge-and-news-women-owh-blog/understanding-endometriosis-symptoms-treatment">Endometriosis Awareness</a>),
+    (<a href="https://hormonehealth.co.uk/top-10-fertility-apps">Fertility Tracking Apps</a>),
+    (<a href="https://my.clevelandclinic.org/health/diseases/21841-menopause">Menopause Symptoms</a>),
   ];
 
   // Filtered and sorted data
@@ -413,7 +413,7 @@ export function Forum() {
                   <ChevronDown className="ml-2 h-4 w-4" />
                 </button>
                 {showFilters && (
-                  <div className="absolute z-10 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2">
+                  <div className="absolute z-10 mt-2 w-48 bg-gray-200 dark:bg-gray-700 rounded-md shadow-lg p-2">
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
