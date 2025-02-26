@@ -406,7 +406,7 @@ export function Forum() {
               <div className="relative">
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="flex items-center px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700"
+                  className="flex items-center px-4 py-2 rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-100"
                 >
                   <Filter className="mr-2 h-4 w-4" />
                   Filters
