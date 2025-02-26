@@ -24,7 +24,7 @@ const teamMembers = [
     role: "Front-End developer",
     image: palakImage,
     bio: "Hi, I'm Palak! I'm a novice who is passionate about diving deep into AI/ML and Web Development while sharpening my Front-End skills. . 🚀",
-    linkedin: "www.linkedin.com/in/palak-chadda-b737272b4",
+    linkedin: "https://www.linkedin.com/in/palak-chadda-b737272b4/",
     github: "https://github.com/palakchadha27",
     isLead: true
   },
