@@ -30,6 +30,19 @@ import {
   User,
   XCircle,
   ChevronDown,
+  Plus,
+  Flame,
+  Star,
+  Trophy,
+  Flower,
+  Dumbbell,
+  Brain,
+  Baby,
+  BookOpen,
+  Shield,
+  Mail,
+  Lock,
+  HelpCircle,
 } from "lucide-react";
 
 export function Forum() {
@@ -51,6 +64,11 @@ export function Forum() {
   const [solvedPosts, setSolvedPosts] = useState([1]);
   const [bookmarks, setBookmarks] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
+  const [showNewPostModal, setShowNewPostModal] = useState(false);
+  const [newPost, setNewPost] = useState({ title: "", content: "", category: "" });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const postsPerPage = 5;
 
   useEffect(() => {
     if (darkMode) {
@@ -106,65 +124,102 @@ export function Forum() {
     );
   };
 
-  // Data arrays
-  const forums = [
-    { id: 1, name: (<a href="https://samawomenshealth.in/">Women's Health</a>), members: 1200, posts: 5600,},
-    { id: 2, name: (<a href="https://theskillcollective.com/womens-health">Fitness & Nutrition</a>), members: 980, posts: 4200,},
-    { id: 3, name: (<a href="https://www.betterhealth.vic.gov.au/campaigns/womens-sexual-and-reproductive-health">Mental Wellness</a>), members: 850, posts: 3800,},
-    { id: 4, name: (<a href="https://www.meetup.com/find/?source=GROUPS&keywords=Women%27s%20Fitness">Reproductive Health</a>), members: 720, posts: 3100,},
+  const handleNewPost = () => {
+    if (newPost.title && newPost.content) {
+      setRecentPosts(prev => [
+        {
+          id: prev.length + 1,
+          title: newPost.title,
+          content: newPost.content,
+          author: "You",
+          likes: 0,
+          comments: 0,
+          category: newPost.category,
+          timestamp: new Date().toISOString(),
+        },
+        ...prev
+      ]);
+      setShowNewPostModal(false);
+      setNewPost({ title: "", content: "", category: "" });
+    }
+  };
+
+  const forumCategories = [
+    { id: 1, name: "Women's Health", icon: <Flower />, color: "bg-white-100", members: 1200, posts: 5600 },
+    { id: 2, name: "Fitness & Nutrition", icon: <Dumbbell />, color: "bg-white-100", members: 980, posts: 4200 },
+    { id: 3, name: "Mental Wellness", icon: <Brain />, color: "bg-white-100", members: 850, posts: 3800 },
+    { id: 4, name: "Reproductive Health", icon: <Baby />, color: "bg-white-100", members: 720, posts: 3100 },
+    { id: 5, name: "Sexual Health", icon: <Shield />, color: "bg-white-100", members: 650, posts: 2800 },
+    { id: 6, name: "Menopause Support", icon: <BookOpen />, color: "bg-white-100", members: 590, posts: 2400 },
   ];
 
-  const recentPosts = [
+  const [recentPosts, setRecentPosts] = useState([
     {
       id: 1,
       title: "My PCOS Journey",
+      content: "Sharing my experience with PCOS diagnosis and management...",
       author: "Ariza Khan",
       likes: 45,
       comments: 12,
+      category: "Women's Health",
+      timestamp: "2024-03-10T14:30:00Z"
     },
     {
       id: 2,
       title: "Best Foods for Hormonal Balance",
+      content: "Here are my top 10 nutrition tips for hormonal health...",
       author: "Riya Patel",
       likes: 38,
       comments: 9,
+      category: "Fitness & Nutrition",
+      timestamp: "2024-03-09T09:15:00Z"
     },
     {
       id: 3,
       title: "Coping with Endometriosis",
+      content: "Looking for support and sharing my pain management strategies...",
       author: "Ishita Roy",
       likes: 52,
       comments: 17,
+      category: "Reproductive Health",
+      timestamp: "2024-03-08T16:45:00Z"
     },
-  ];
+  ]);
 
   const trendingTopics = [
-    (<a href="https://www.healthline.com/health/womens-health/menstrual-cup">Menstrual Cup Usage</a>),
-    (<a href="https://www.healthline.com/nutrition/balance-hormones">Hormone Balancing Foods</a>),
-    (<a href="https://www.fda.gov/consumers/knowledge-and-news-women-owh-blog/understanding-endometriosis-symptoms-treatment">Endometriosis Awareness</a>),
-    (<a href="https://hormonehealth.co.uk/top-10-fertility-apps">Fertility Tracking Apps</a>),
-    (<a href="https://my.clevelandclinic.org/health/diseases/21841-menopause">Menopause Symptoms</a>),
+    { title: "Menstrual Cup Usage", icon: <Flame />, posts: 234 },
+    { title: "Hormone Balancing Foods", icon: <Star />, posts: 189 },
+    { title: "Endometriosis Awareness", icon: <Trophy />, posts: 156 },
+    { title: "Fertility Tracking Apps", icon: <TrendingUp />, posts: 142 },
+    { title: "Menopause Symptoms", icon: <HelpCircle />, posts: 128 },
   ];
 
-  // Filtered and sorted data
-  const filteredForums = forums.filter(forum => {
+  const filteredForums = forumCategories.filter(forum => {
     if (filterBy === "large") return forum.members > 1000;
     if (filterBy === "active") return forum.posts > 5000;
     return true;
   });
 
-  const sortedPosts = [...recentPosts]
+  const filteredPosts = [...recentPosts]
+    .filter(post => {
+      const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.content.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    })
     .sort((a, b) => {
       if (sortBy === "likes") return b.likes - a.likes;
       if (sortBy === "comments") return b.comments - a.comments;
-      return b.id - a.id;
-    })
-    .filter(post =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.author.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+      return new Date(b.timestamp) - new Date(a.timestamp);
+    });
 
-  // Animation variants
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -176,24 +231,89 @@ export function Forum() {
       animate={{ opacity: 1, y: 0 }}
       className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1"
     >
-      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+      <button className="flex items-center w-full px-4 py-2  text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">
         <User className="mr-3 h-5 w-5" /> Profile
       </button>
-      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+      <button className="flex items-center w-full px-4 py-2  text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">
         <Bookmark className="mr-3 h-5 w-5" /> Bookmarks
       </button>
-      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+      <button className="flex items-center w-full px-4 py-2 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">
         <CheckCircle className="mr-3 h-5 w-5" /> My Solutions
       </button>
-      <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+      <button className="flex items-center w-full px-4 py-2  text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">
+        <Mail className="mr-3 h-5 w-5" /> Messages
+      </button>
+      <button className="flex items-center w-full px-4 py-2  text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">
+        <Lock className="mr-3 h-5 w-5" /> Privacy Settings
+      </button>
+      <button className="flex items-center w-full px-4 py-2  text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">
         <XCircle className="mr-3 h-5 w-5" /> Logout
       </button>
     </motion.div>
   );
 
+  const NewPostModal = () => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <motion.div
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
+        className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-2xl"
+      >
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-semibold">Create New Post</h3>
+          <button onClick={() => setShowNewPostModal(false)} className="text-gray-400 hover:text-gray-700">
+            <XCircle />
+          </button>
+        </div>
+        <div className="space-y-4">
+          <input
+            type="text"
+            placeholder="Post Title"
+            className="w-full p-2 border rounded-lg dark:bg-gray-700"
+            value={newPost.title}
+            onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+          />
+          <select
+            className="w-full p-2 border rounded-lg dark:bg-gray-700"
+            value={newPost.category}
+            onChange={(e) => setNewPost({ ...newPost, category: e.target.value })}
+          >
+            <option value="">Select Category</option>
+            {forumCategories.map(category => (
+              <option key={category.id} value={category.name}>{category.name}</option>
+            ))}
+          </select>
+          <textarea
+            placeholder="Write your post content..."
+            className="w-full p-2 border rounded-lg h-48 dark:bg-gray-700"
+            value={newPost.content}
+            onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+          />
+          <div className="flex justify-end space-x-2">
+            <button
+              onClick={() => setShowNewPostModal(false)}
+              className="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleNewPost}
+              className="px-4 py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-700"
+            >
+              Post
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+
   return (
     <div className={`flex h-screen ${darkMode ? "dark" : ""}`}>
-      {/* Sidebar */}
       <aside
         className={`bg-pink-100 dark:bg-gray-800 w-64 min-h-screen p-4 fixed transition-all duration-300 ease-in-out ${
           sidebarVisible ? "translate-x-0" : "-translate-x-full"
@@ -286,7 +406,6 @@ export function Forum() {
         style={{
           transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
         }}
-        aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       >
         <ChevronRight
           size={14}
@@ -296,23 +415,28 @@ export function Forum() {
         />
       </button>
 
-      {/* Main Content */}
       <main
         className={`flex-1 p-6 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${
           sidebarVisible ? "ml-64" : "ml-0"
         }`}
       >
         <div className="max-w-6xl mx-auto space-y-8">
-          {/* Header */}
           <div className="flex justify-between items-center">
             <h2 className="text-3xl font-bold text-pink-600 dark:text-pink-400">
               Community Forums
             </h2>
             <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setShowNewPostModal(true)}
+                className="flex items-center bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700"
+              >
+                <Plus className="mr-2 h-5 w-5" />
+                New Post
+              </button>
               <div className="relative">
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="p-2 relative rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                  className="p-2 rounded-full bg-white-100 dark:bg-gray-600 "
                 >
                   <Bell className="h-6 w-6" />
                   {notifications.some(n => !n.read) && (
@@ -325,7 +449,7 @@ export function Forum() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2"
+                      className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2  text-gray-700 dark:text-gray-100"
                     >
                       <div className="px-4 py-2 font-semibold border-b dark:border-gray-700">
                         Notifications
@@ -334,7 +458,7 @@ export function Forum() {
                         <div
                           key={notification.id}
                           className={`px-4 py-2 text-sm flex items-center justify-between ${
-                            !notification.read ? "bg-pink-50 dark:bg-gray-700" : ""
+                            !notification.read ? "bg-pink-50 dark:bg-gray-600" : ""
                           }`}
                         >
                           <span>{notification.text}</span>
@@ -355,7 +479,7 @@ export function Forum() {
               <div className="relative">
                 <button
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 p-0.5 rounded-full bg-white-100 dark:bg-gray-600"
                 >
                   <img
                     src="/images/women.jpeg"
@@ -369,7 +493,7 @@ export function Forum() {
               </div>
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+                className="p-2 rounded-full bg-gray-100 dark:bg-gray-700"
               >
                 {darkMode ? (
                   <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
@@ -380,7 +504,6 @@ export function Forum() {
             </div>
           </div>
 
-          {/* Search and Filters */}
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
               <button
@@ -413,7 +536,7 @@ export function Forum() {
                   <ChevronDown className="ml-2 h-4 w-4" />
                 </button>
                 {showFilters && (
-                  <div className="absolute z-10 mt-2 w-48 bg-gray-200 dark:bg-gray-700 rounded-md shadow-lg p-2">
+                  <div className="absolute z-10 mt-2 w-48 bg-gray-200 dark:bg-gray-600 rounded-md shadow-lg p-2">
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
@@ -435,6 +558,18 @@ export function Forum() {
                   </div>
                 )}
               </div>
+              <div className="flex items-center space-x-2">
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="bg-gray-200 dark:bg-gray-800  text-gray-700 dark:text-gray-100 px-1 py-2 rounded-full"
+                >
+                  <option value="all">All Categories</option>
+                  {forumCategories.map(category => (
+                    <option key={category.id} value={category.name}>{category.name}</option>
+                  ))}
+                </select>
+              </div>
             </div>
             <div className="flex items-center space-x-2">
               <div className="relative">
@@ -453,53 +588,51 @@ export function Forum() {
             </div>
           </div>
 
-          {/* Forums List */}
           {activeTab === "forums" && (
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               initial="hidden"
               animate="visible"
-              variants={{
-                visible: { transition: { staggerChildren: 0.1 } },
-              }}
+              variants={{ visible: { transition: { staggerChildren: 0.1 } }}}
             >
               {filteredForums.map((forum) => (
                 <motion.div
                   key={forum.id}
                   variants={cardVariants}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                  className={`${forum.color} dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all`}
                 >
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
-                    {forum.name}
-                  </h3>
-                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center mb-4">
+                    <div className="p-2 bg-white rounded-lg">{forum.icon}</div>
+                    <h3 className="text-xl font-semibold ml-3 dark:text-gray-100">{forum.name}</h3>
+                  </div>
+                  <div className="flex justify-between text-sm dark:text-gray-400">
                     <span className="flex items-center">
-                      <Users size={16} className="mr-1" /> {forum.members} members
+                      <Users className="mr-1" /> {forum.members.toLocaleString()} members
                     </span>
                     <span className="flex items-center">
-                      <MessageSquare size={16} className="mr-1" /> {forum.posts} posts
+                      <MessageSquare className="mr-1" /> {forum.posts.toLocaleString()} posts
                     </span>
                   </div>
+                  <button className="w-full mt-4 bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700">
+                    Join Community
+                  </button>
                 </motion.div>
               ))}
             </motion.div>
           )}
 
-          {/* Recent Posts */}
           {activeTab === "posts" && (
             <motion.div
               className="space-y-6"
               initial="hidden"
               animate="visible"
-              variants={{
-                visible: { transition: { staggerChildren: 0.1 } },
-              }}
+              variants={{ visible: { transition: { staggerChildren: 0.1 } }}}
             >
-              {sortedPosts.map((post) => (
+              {currentPosts.map((post) => (
                 <motion.div
                   key={post.id}
                   variants={cardVariants}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md relative group"
+                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md relative group"
                 >
                   <div className="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
@@ -525,12 +658,22 @@ export function Forum() {
                       />
                     </button>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    By {post.author}
-                  </p>
+                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    <img
+                      src="/images/women.jpeg"
+                      alt={post.author}
+                      className="w-8 h-8 rounded-full mr-2"
+                    />
+                    <span className="font-medium">{post.author}</span>
+                    <span className="mx-2">•</span>
+                    <span>{new Date(post.timestamp).toLocaleDateString()}</span>
+                    <span className="mx-2">•</span>
+                    <span className="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-2 py-1 rounded-full text-xs">
+                      {post.category}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 dark:text-gray-100">{post.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">{post.content}</p>
                   <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                     <button
                       onClick={() => handleLike(post.id)}
@@ -550,35 +693,50 @@ export function Forum() {
                   </div>
                 </motion.div>
               ))}
+              
+              <div className="flex justify-center space-x-2">
+                {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => paginate(index + 1)}
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === index + 1
+                        ? "bg-pink-600 text-white"
+                        : "bg-gray-200 dark:bg-gray-700"
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
             </motion.div>
           )}
 
-          {/* Trending Topics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
           >
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-              Trending Topics
-            </h3>
+            <h3 className="text-xl font-semibold mb-4 dark:text-gray-100">Trending Topics</h3>
             <ul className="space-y-2">
               {trendingTopics.map((topic, index) => (
                 <li
                   key={index}
                   className="flex items-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-md cursor-pointer transition-colors"
                 >
-                  <TrendingUp
-                    size={16}
-                    className="mr-2 text-pink-600 dark:text-pink-400"
-                  />
-                  {topic}
+                  {topic.icon}
+                  <span className="ml-2">{topic.title}</span>
+                  <span className="ml-auto text-sm text-gray-500">{topic.posts} posts</span>
                 </li>
               ))}
             </ul>
           </motion.div>
         </div>
       </main>
+
+      <AnimatePresence>
+        {showNewPostModal && <NewPostModal />}
+      </AnimatePresence>
     </div>
   );
 }
