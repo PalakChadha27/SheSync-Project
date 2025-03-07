@@ -430,6 +430,43 @@ export function Landing() {
               <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
             </div>
           </Card>
+          <Card className="my-8  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
+            <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl p-6 relative overflow-hidden group">
+              <div className="relative z-10 space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      Partner's Dashboard
+                    </h3>
+                    <p className="text-gray-200">
+                      Access comprehensive insights for your Child's health
+                    </p>
+                  </div>
+                  <div className="bg-white/20 p-3 rounded-full">
+                    <UserCircle className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+
+                <p className="text-white/80">
+                Our Partner Dashboard provides a shared view of your menstrual health, allowing your spouse to track cycles, monitor symptoms, and stay informed, fostering better support and understanding.
+                </p>
+
+                <button
+                  onClick={() => navigate("/partner")}
+                  className="w-full bg-white text-purple-600 px-6 py-3 rounded-lg font-medium
+                             hover:bg-gray-100 transition-all duration-300
+                             flex items-center justify-center space-x-2 group"
+                >
+                  <span>Access Partner's Dashboard</span>
+                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+              <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+            </div>
+          </Card>
           {/* Key Benefits Section */}
           <Card className=" hover:bg-pink-200  focus:outline-none focus:ring focus:ring-pink-300 dark:hover:bg-pink-500 ">
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100  ">
