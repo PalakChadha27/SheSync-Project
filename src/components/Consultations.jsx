@@ -7,6 +7,7 @@ import {
   Star,
   Clock,
   HeartHandshake,
+  AppWindowMac,
   DollarSign,
   ChevronDown,
   Gamepad2,
@@ -306,6 +307,11 @@ export function Consultations() {
                   label="HealthLens"
                   onClick={() => navigate("/symptomsanalyzer")}
                 />
+                <SidebarLink
+            icon={<AppWindowMac size={20} />}
+            label="Parents Dashboard"
+            onClick={() => navigate("/parents")}
+          />
                 <SidebarLink
                   icon={<MessageSquare size={20} />}
                   label="Forums"
