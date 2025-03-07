@@ -240,7 +240,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <GraduationCap className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <GraduationCap className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/blogs")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
                 
@@ -254,7 +254,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800  rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <ShoppingBag className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <ShoppingBag className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/Ecom")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
                 
@@ -268,7 +268,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <ActivitySquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <ActivitySquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/tracker")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
 
@@ -282,7 +282,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <Stethoscope className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <Stethoscope className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/consultations")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
                 
@@ -296,7 +296,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <Bot className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <Bot className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/ChatBot")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
                   
@@ -310,7 +310,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg  ">
-                <UsersRound className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <UsersRound className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/dashboard")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
                   
@@ -325,7 +325,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <HeartPulse className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <HeartPulse className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/symptomsanalyzer")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
                   
@@ -339,7 +339,7 @@ export function Landing() {
               </div>
 
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <MessageSquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <MessageSquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/forums")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
                   
@@ -352,7 +352,12 @@ export function Landing() {
                 </p>
               </div>
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <Handshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <Handshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() =>
+              window.open(
+                "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
+                "_blank"
+              )
+            }/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
                   
@@ -366,7 +371,11 @@ export function Landing() {
                 </p>
               </div>
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <HeartHandshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <HeartHandshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => 
+              window.open(
+                "https://thepadproject.org/donate/"
+                )  
+              }/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
                   
