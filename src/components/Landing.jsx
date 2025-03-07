@@ -227,7 +227,7 @@ export function Landing() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <LayoutDashboard className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <LayoutDashboard className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4"  onClick={() => navigate("/dashboard")}/>
                 <h4
                   className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ..."
                 >
