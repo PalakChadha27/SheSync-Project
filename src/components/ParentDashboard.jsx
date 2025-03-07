@@ -957,9 +957,9 @@ dark:bg-gray-800/50 border border-pink-100/20 dark:border-pink-900/20"
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-600 rounded-full blur-lg opacity-20 animate-pulse" />
                 <Heart className="h-8 w-8 text-pink-500 relative" />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
                 Parent Dashboard
-              </h1>
+              </h2>
             </motion.div>
             <div className="flex items-center space-x-4">
               <motion.button
