@@ -37,6 +37,7 @@ import {
   Lock,
   Unlock,
   AlertTriangle,
+  AppWindowMac,
 } from "lucide-react";
 import axios from "axios";
 import { PrivacyForm } from "./PrivacyForm";
@@ -401,6 +402,11 @@ export function Dashboard() {
               icon={<HeartPulse size={20} />}
               label="HealthLens"
               onClick={() => navigate("/symptomsanalyzer")}
+            />
+            <NavItem
+              icon={<AppWindowMac size={20} />}
+              label="Parents Dashboard"
+              onClick={() => navigate("/parents")}
             />
             <NavItem
               icon={<MessageSquare size={20} />}

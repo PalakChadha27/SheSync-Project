@@ -5,6 +5,7 @@ import {
   HeartPulse,
   MessageSquare,
   HeartHandshake,
+  AppWindowMac,
   Frown,
   Smile,
   Angry,
@@ -400,6 +401,11 @@ export function Blogs() {
             icon={<HeartPulse size={20} />}
             label="HealthLens"
             onClick={() => navigate("/symptomsanalyzer")}
+          />
+          <SidebarLink
+            icon={<AppWindowMac size={20} />}
+            label="Parents Dashboard"
+            onClick={() => navigate("/parents")}
           />
           <SidebarLink
             icon={<MessageSquare size={20} />}

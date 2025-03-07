@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import {
   Calendar,
   Frown,
+  AppWindowMac,
   HeartPulse,
   Smile,
   Angry,
   Gamepad2,
+  ShoppingBag,
   MessageSquare,
   Coffee,
   HeartHandshake,
@@ -21,7 +23,6 @@ import {
   LayoutDashboard,
   Home,
   GraduationCap,
-  ShoppingBag,
   ActivitySquare,
   Stethoscope,
   Bot,
@@ -414,6 +415,11 @@ export function PeriodTracker() {
               icon={<HeartPulse size={20} />}
               label="HealthLens"
               onClick={() => navigate("/symptomsanalyzer")}
+            />
+            <SidebarLink
+                        icon={<AppWindowMac size={20} />}
+                        label="Parents Dashboard"
+                        onClick={() => navigate("/parents")}
             />
             <SidebarLink
               icon={<MessageSquare size={20} />}

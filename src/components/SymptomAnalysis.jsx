@@ -11,6 +11,7 @@ import {
   HeartHandshake,
   Loader2,
   CheckCircle,
+  AppWindowMac,
   Sun,
   Moon,
   ArrowLeft,
@@ -597,6 +598,11 @@ export function SymptomAnalysis() {
             onClick={() => navigate("/symptomsanalyzer")}
             active
           />
+          <SidebarLink
+                                  icon={<AppWindowMac size={20} />}
+                                  label="Parents Dashboard"
+                                  onClick={() => navigate("/parents")}
+                                />
           <SidebarLink
             icon={<MessageSquare size={20} />}
             label="Forums"

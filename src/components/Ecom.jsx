@@ -9,6 +9,7 @@ import {
   GraduationCap,
   HeartHandshake,
   Home,
+  AppWindowMac,
   BookOpen,
   ActivitySquare,
   Bot,
@@ -430,6 +431,11 @@ export function Ecom() {
             icon={<HeartPulse size={20} />}
             label="HealthLens"
             onClick={() => navigate("/symptomsanalyzer")}
+          />
+          <SidebarLink
+            icon={<AppWindowMac size={20} />}
+            label="Parents Dashboard"
+            onClick={() => navigate("/parents")}
           />
           <SidebarLink
             icon={<MessageSquare size={20} />}

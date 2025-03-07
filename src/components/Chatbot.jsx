@@ -7,6 +7,7 @@ import {
   Home,
   Trash2,
   LayoutDashboard,
+  AppWindowMac,
   ActivitySquare,
   Gamepad2,
   Loader,
@@ -300,7 +301,7 @@ export function Chatbot() {
             />
             <SidebarLink
               icon={<Stethoscope size={20} />}
-              label="ExpertConsultation"
+              label="Expert Consultation"
               onClick={() => navigate("/consultations")}
             />
             <SidebarLink
@@ -314,6 +315,11 @@ export function Chatbot() {
               label="HealthLens"
               onClick={() => navigate("/symptomsanalyzer")}
             />
+            <SidebarLink
+                        icon={<AppWindowMac size={20} />}
+                        label="Parents Dashboard"
+                        onClick={() => navigate("/parents")}
+                      />
             <SidebarLink
               icon={<MessageSquare size={20} />}
               label="Forums"
