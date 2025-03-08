@@ -291,49 +291,6 @@ export function PartnerDashboard() {
           </div>
         </div>
       </header>
-
-      <main className="container mx-auto px-4 py-8">
-        <div className="space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              ease: [0.645, 0.045, 0.355, 1]
-            }}
-            className="flex space-x-1 p-1 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl shadow-lg border border-pink-100/20 dark:border-pink-900/20"
-          >
-            {['overview', 'goals'].map((tab) => (
-              <motion.button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`flex-1 px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                  activeTab === tab
-                    ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg"
-                    : "text-gray-600 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
-                }`}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </motion.button>
-            ))}
-          </motion.div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageTransition}
-            >
-              {activeTab === 'overview' && renderOverviewCards()}
-              {activeTab === 'goals' && renderSharedGoals()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </main>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { format, addDays } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import {
   Calendar,
+  ChevronRight,
   Frown,
   AppWindowMac,
   HeartPulse,
@@ -31,6 +32,10 @@ import axios from "axios";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 const local_url = "http://localhost:3000/";
+
+const toggleSidebar = () => {
+  setSidebarVisible(!sidebarVisible);
+};
 
 const moodOptions = [
   { name: "Happy", icon: Smile },
@@ -64,6 +69,7 @@ const sleepQualityOptions = ["Poor", "Fair", "Good", "Excellent"];
 
 export function PeriodTracker() {
   const navigate = useNavigate();
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   const [cycleDuration, setCycleDuration] = useState("");
   const [lastPeriodStart, setLastPeriodStart] = useState("");
   const [lastPeriodDuration, setLastPeriodDuration] = useState("");
@@ -232,6 +238,10 @@ export function PeriodTracker() {
     }
   };
 
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
+
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
       ...prev,
@@ -369,69 +379,77 @@ export function PeriodTracker() {
   return (
     <div className={`flex h-screen ${darkMode ? "dark" : ""}`}>
       {/* Sidebar */}
-      <aside className="bg-pink-100 dark:bg-gray-800 w-64 min-h-screen p-4">
-        <nav className="mt-8">
-          <div className="px-4 py-4 flex flex-col space-y-2">
-            <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">
-              SheSync
-            </h1>
-            <SidebarLink
-              icon={<LayoutDashboard size={20} />}
-              label="Dashboard"
-              onClick={() => navigate("/dashboard")}
-            />
-            <SidebarLink
-              icon={<Home size={20} />}
-              label="Home"
-              onClick={() => navigate("/")}
-            />
-            <SidebarLink
-              icon={<GraduationCap size={20} />}
-              label="Education"
-              onClick={() => navigate("/blogs")}
-            />
-            <SidebarLink
-              icon={<ShoppingBag size={20} />}
-              label="Shop"
-              onClick={() => navigate("/Ecom")}
-            />
-            <SidebarLink
-              icon={<ActivitySquare size={20} />}
-              label="Track Your Health"
-              onClick={() => navigate("/tracker")}
-              active
-            />
-            <SidebarLink
-              icon={<Stethoscope size={20} />}
-              label="Expert Consultation"
-              onClick={() => navigate("/consultations")}
-            />
-            <SidebarLink
-              icon={<Bot size={20} />}
-              label="Eve"
-              onClick={() => navigate("/ChatBot")}
-            />
-            <SidebarLink
-              icon={<HeartPulse size={20} />}
-              label="HealthLens"
-              onClick={() => navigate("/symptomsanalyzer")}
-            />
-            <SidebarLink
-                        icon={<AppWindowMac size={20} />}
-                        label="Parents Dashboard"
-                        onClick={() => navigate("/parents")}
-            />
-            <SidebarLink
-              icon={<MessageSquare size={20} />}
-              label="Forums"
-              onClick={() => navigate("/forums")}
-            />
-            <SidebarLink
-              icon={<HeartHandshake size={20} />}
-              label="ShareJoy"
-              onClick={() => window.open("https://thepadproject.org/donate/", "_blank")}
-            />
-            <SidebarLink
+      <aside
+        className={`bg-pink-100 dark:bg-gray-800 w-64 min-h-screen p-4 fixed transition-all duration-300 ease-in-out ${
+          sidebarVisible ? "translate-x-0" : "-translate-x-full"
+        }`}
+        style={{ zIndex: 40 }}
+      >
+        <div className="px-4 py-4 flex flex-col space-y-2">
+          <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 ">
+            SheSync
+          </h1>
+          <SidebarLink
+            icon={<LayoutDashboard size={20} />}
+            label="Dashboard"
+            onClick={() => navigate("/dashboard")}
+          />
+          <SidebarLink
+            icon={<Home size={20} />}
+            label="Home"
+            onClick={() => navigate("/")}
+          />
+          <SidebarLink
+            icon={<GraduationCap size={20} />}
+            label="Education"
+            onClick={() => navigate("/blogs")}
+          />
+          <SidebarLink
+            icon={<ShoppingBag size={20} />}
+            label="Shop"
+            onClick={() => navigate("/Ecom")}
+          />
+          <SidebarLink
+            icon={<ActivitySquare size={20} />}
+            label="Track Your Health"
+            onClick={() => navigate("/tracker")}
+            active
+          />
+          <SidebarLink
+            icon={<Stethoscope size={20} />}
+            label="Expert Consultation"
+            onClick={() => navigate("/consultations")}
+          />
+          <SidebarLink
+            icon={<Bot size={20} />}
+            label="Eve"
+            onClick={() => navigate("/ChatBot")}
+          />
+          <SidebarLink
+            icon={<HeartPulse size={20} />}
+            label="HealthLens"
+            onClick={() => navigate("/symptomsanalyzer")}
+          />
+          <SidebarLink
+            icon={<AppWindowMac size={20} />}
+            label="Parents Dashboard"
+            onClick={() => navigate("/parents")}
+          />
+          <SidebarLink
+            icon={<MessageSquare size={20} />}
+            label="Forums"
+            onClick={() => navigate("/forums")}
+          />
+          <SidebarLink
+            icon={<HeartHandshake size={20} />}
+            label="ShareJoy"
+            onClick={() => 
+              window.open(
+                "https://thepadproject.org/donate/"
+                )  
+              }
+          />
+          <SidebarLink
             icon={<Gamepad2 size={20} />}
             label="Bliss"
             onClick={() =>
@@ -441,22 +459,41 @@ export function PeriodTracker() {
               )
             }
           />
-            <SidebarLink
-              icon={<Handshake size={20} />}
-              label="NGO's"
-              onClick={() =>
-                window.open(
-                  "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
-                  "_blank"
-                )
-              }
-            />
-          </div>
-        </nav>
+          <SidebarLink
+            icon={<Handshake size={20} />}
+            label="NGO's"
+            onClick={() =>
+              window.open(
+                "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
+                "_blank"
+              )
+            }
+          />
+        </div>
       </aside>
 
+      <button
+        onClick={toggleSidebar}
+        className="fixed left-0 top-0 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+        style={{
+          transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
+        }}
+        aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
+      >
+        <ChevronRight
+          size={14}
+          className={`transition-transform duration-300 ${
+            sidebarVisible ? "rotate-180" : "rotate-0"
+          }`}
+        />
+      </button>
+
       {/* Main Content */}
-      <main className="flex-1 p-6 overflow-auto bg-white dark:bg-gray-900">
+      <main
+        className={`flex-1 p-6 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${
+          sidebarVisible ? "ml-64" : "ml-0"
+        }`}
+      >
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Header */}
           <div className="flex justify-between items-center">
@@ -756,7 +793,7 @@ const SidebarLink = ({ icon, label, onClick, active = false }) => {
       className={`flex items-center space-x-2 w-full px-2 py-2 rounded-lg transition-colors ${
         active
           ? "bg-pink-200 dark:bg-pink-900 text-pink-800 dark:text-pink-200"
-          : "text-gray-600 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700"
+          : "text-gray-900 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700"
       }`}
     >
       {icon}

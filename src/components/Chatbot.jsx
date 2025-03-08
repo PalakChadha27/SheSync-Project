@@ -27,6 +27,7 @@ import {
   MessageCircle,
   HeartHandshake,
   Handshake,
+  ChevronRight
 } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -59,6 +60,7 @@ const popularEmojis = [
 ];
 
 export function Chatbot() {
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -120,7 +122,9 @@ export function Chatbot() {
       speechSynthesis.speak(utterance);
     }
   };
-
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
   const stopSpeaking = () => {
     if ("speechSynthesis" in window) {
       speechSynthesis.cancel();
@@ -249,27 +253,27 @@ export function Chatbot() {
     return () => document.head.removeChild(style);
   }, []);
 
-  const SidebarLink = ({ icon, label, onClick, active = false }) => (
-    <button
-      onClick={onClick}
-      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-lg transition-colors ${
-        active
-          ? "bg-pink-200 dark:bg-pink-900 text-pink-800 dark:text-pink-200"
-          : "text-gray-600 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700"
-      }`}
-    >
-      {icon}
-      <span>{label}</span>
-    </button>
-  );
-
+  const SidebarLink = ({ icon, label, onClick, active = false }) => {
+    return (
+      <button
+        onClick={onClick}
+        className={`flex items-center space-x-2 w-full px-2 py-2 rounded-lg transition-colors ${
+          active
+            ? "bg-pink-200 dark:bg-pink-900 text-pink-800 dark:text-pink-200"
+            : "text-gray-900 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700"
+        }`}
+      >
+        {icon}
+        <span>{label}</span>
+      </button>
+    );
+  };
   return (
     <div
       className={`SheSync-chatbot ${isDarkMode ? "" : "light"} flex h-screen`}
     >
       {/* Sidebar */}
       <aside className="bg-pink-100 w-64 p-4 border-r border-[var(--fc-accent)]">
-        <nav className="mt-8">
           <div className="px-4 py-4 flex flex-col space-y-2">
             <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">
               SheSync
@@ -351,11 +355,26 @@ export function Chatbot() {
               }
             />
           </div>
-        </nav>
       </aside>
+      <button
+        onClick={toggleSidebar}
+        className="fixed left-0 top-0 z-10 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+        style={{
+          transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
+        }}
+        aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
+      >
+        <ChevronRight
+          size={14}
+          className={`transition-transform duration-300 ${
+            sidebarVisible ? "rotate-180" : "rotate-0"
+          }`}
+        />
+      </button>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-[var(--fc-bg-primary)] transition-colors duration-200">
+      
+      <div className="flex-1 flex flex-col bg-[var(--fc-bg-primary)] transition-colors duration-200  ">
         <div className="flex items-center justify-between p-4 bg-[var(--fc-accent)] shadow-md">
           <h2
             style={{ fontFamily: "sans-serif" }}

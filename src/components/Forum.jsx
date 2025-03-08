@@ -321,7 +321,6 @@ export function Forum() {
         }`}
         style={{ zIndex: 40 }}
       >
-        <nav className="mt-8">
           <div className="px-4 py-4 flex flex-col space-y-2">
             <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">
               SheSync
@@ -403,7 +402,6 @@ export function Forum() {
               }
             />
           </div>
-        </nav>
       </aside>
 
       <button
@@ -749,9 +747,7 @@ export function Forum() {
 
 const SidebarLink = ({ icon, label, onClick, active = false }) => {
   return (
-    <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <button
       onClick={onClick}
       className={`flex items-center space-x-2 w-full px-2 py-2 rounded-lg transition-colors ${
         active
@@ -761,6 +757,6 @@ const SidebarLink = ({ icon, label, onClick, active = false }) => {
     >
       {icon}
       <span>{label}</span>
-    </motion.button>
+    </button>
   );
 };
