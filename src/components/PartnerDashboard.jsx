@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { format, addDays } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import {
   Calendar,
   ChevronRight,
@@ -211,8 +212,9 @@ export function Diagnosis() {
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = response.text();
+      const sections = await text.split(/(## .+)/).filter(Boolean);
 
-      setPcosReport(text);
+      setPcosReport(sections);
       setShowHealthTips(true);
     } catch (err) {
       console.error("Error generating report:", err);
@@ -576,7 +578,17 @@ export function Diagnosis() {
                     </div>
                   ) : (
                     <div className="prose dark:prose-invert max-w-none">
-                      <div dangerouslySetInnerHTML={{ __html: pcosReport }} />
+                      {pcosReport.map((section, index) => (
+                        <div key={index}>
+                          {section.startsWith("## ") ? (
+                            <h2 className="text-xl font-bold text-pink-600 dark:text-pink-400 mb-2">
+                              {section.replace("## ", "")}
+                            </h2>
+                          ) : (
+                            <ReactMarkdown>{section}</ReactMarkdown>
+                          )}
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>,
