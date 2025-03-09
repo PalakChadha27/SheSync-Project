@@ -437,7 +437,7 @@ export function Landing() {
             </div>
           </Card>
           <Card className="my-8  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
-            <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl p-6 relative overflow-hidden group">
+            <div className="bg-gradient-to-r from-pink-400 to-pink-700 rounded-xl p-6 relative overflow-hidden group">
               <div className="relative z-10 space-y-6">
                 <div className="flex items-center justify-between">
                   <div>

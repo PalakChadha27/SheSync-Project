@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { Activity, Bell, Brain, Calendar, ChevronRight, FileText, Heart, Mail, MessageCircle, Moon, Phone, Pill, Play, Plus, Sun, User, Sparkles, TrendingUp, Target, Gamepad2, Clock, Award, BarChart2 } from 'lucide-react'
 
-// Animation variants
 const pageTransition = {
   initial: { opacity: 0, y: 20 },
   animate: { 
@@ -52,7 +51,6 @@ const cardVariants = {
   }
 }
 
-// Mock data for partners
 const partnersData = [
   {
     id: 1,
@@ -92,24 +90,15 @@ const sharedCycleData = {
 }
 
 const sharedGoals = [
-  {
-    title: "Sync Sleep Schedules",
-    progress: 70,
-    target: "8 hours daily",
-    streak: 5
-  },
-  {
-    title: "Joint Meditation",
-    progress: 60,
-    target: "15 mins daily",
-    streak: 3
-  },
-  {
-    title: "Shared Symptom Tracking",
-    progress: 90,
-    target: "Daily logging",
-    streak: 10
-  }
+  { title: "Sync Sleep Schedules", progress: 70, target: "8 hours daily", streak: 5 },
+  { title: "Joint Meditation", progress: 60, target: "15 mins daily", streak: 3 },
+  { title: "Shared Symptom Tracking", progress: 90, target: "Daily logging", streak: 10 }
+]
+
+const comparisonMetrics = [
+  { label: 'Cycle Sync', value: 65 },
+  { label: 'Mood Alignment', value: 80 },
+  { label: 'Symptom Similarity', value: 45 }
 ]
 
 export function PartnerDashboard() {
@@ -117,82 +106,63 @@ export function PartnerDashboard() {
   const [activeTab, setActiveTab] = useState('overview')
 
   useEffect(() => {
-    const root = window.document.documentElement
-    root.classList.toggle('dark', darkMode)
+    document.documentElement.classList.toggle('dark', darkMode)
   }, [darkMode])
 
-  const renderOverviewCards = () => (
+  const renderOverview = () => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {partnersData.map(partner => (
         <motion.div
           key={partner.id}
           variants={cardVariants}
-          initial="initial"
-          animate="animate"
-          whileHover="hover"
-          className="relative overflow-hidden bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-xl border border-pink-100/20"
+          className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-pink-100/20 p-6"
         >
-          <div className="p-6 space-y-6">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-600 rounded-full blur-lg opacity-20 animate-pulse" />
-                <div className="relative h-16 w-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center border-2 border-white dark:border-gray-700">
-                  <span className="text-xl font-semibold text-white">{partner.name[0]}</span>
-                </div>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative">
+              <div className="absolute inset-0 bg-pink-500/20 rounded-full blur-lg" />
+              <div className="h-12 w-12 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                {partner.name[0]}
               </div>
-              <div>
-                <h3 className="text-xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                  {partner.name}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Cycle Length: {partner.cycleLength} days</p>
-              </div>
-              <div className="ml-auto">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-1 px-3 py-1 rounded-full bg-pink-100 dark:bg-pink-900/30"
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white">{partner.name}</h3>
+              <p className="text-sm text-gray-500">Cycle: {partner.cycleLength} days</p>
+            </div>
+            <div className="ml-auto flex items-center gap-2 bg-pink-100 dark:bg-pink-900/20 px-3 py-1 rounded-full">
+              <Sparkles className="h-4 w-4 text-pink-500" />
+              <span className="text-sm text-pink-600 dark:text-pink-300">
+                {partner.healthScore}% Health
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+              <p className="text-sm text-gray-500 mb-1">Current Phase</p>
+              <p className="font-medium text-pink-600 dark:text-pink-300">{partner.currentPhase}</p>
+            </div>
+            <div className="p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+              <p className="text-sm text-gray-500 mb-1">Next Period</p>
+              <p className="font-medium text-pink-600 dark:text-pink-300">{partner.nextPeriod}</p>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">Current Symptoms</h4>
+              <TrendingUp className="h-4 w-4 text-pink-500" />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {partner.symptoms.map((symptom, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="px-2 py-1 rounded-full bg-pink-100 dark:bg-pink-900/20 text-sm text-pink-600 dark:text-pink-300"
                 >
-                  <Sparkles className="h-4 w-4 text-pink-500" />
-                  <span className="text-sm font-medium text-pink-700 dark:text-pink-300">
-                    {partner.healthScore}% Health
-                  </span>
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 border border-pink-100/20 dark:border-pink-900/20">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Current Phase</p>
-                <p className="text-lg font-semibold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                  {partner.currentPhase}
-                </p>
-              </div>
-              <div className="p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 border border-pink-100/20 dark:border-pink-900/20">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Next Period</p>
-                <p className="text-lg font-semibold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                  {partner.nextPeriod}
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <h4 className="text-sm font-medium text-gray-600 dark:text-gray-300">Current Symptoms</h4>
-                <TrendingUp className="h-4 w-4 text-pink-500" />
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {partner.symptoms.map((symptom, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="px-3 py-1 rounded-full bg-pink-100 dark:bg-pink-900/20 text-sm text-pink-700 dark:text-pink-300"
-                  >
-                    {symptom}
-                  </motion.div>
-                ))}
-              </div>
+                  {symptom}
+                </motion.span>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -201,96 +171,139 @@ export function PartnerDashboard() {
   )
 
   const renderSharedGoals = () => (
-    <motion.div
-      variants={pageTransition}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="grid gap-6"
-    >
-      <motion.div
-        variants={cardVariants}
-        className="relative overflow-hidden bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-xl border border-pink-100/20"
-      >
-        <div className="p-6">
-          <h3 className="text-xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-6">
-            Shared Wellness Goals
-          </h3>
-          <div className="grid gap-6">
-            {sharedGoals.map((goal, index) => (
+    <motion.div variants={cardVariants} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">Shared Wellness Goals</h3>
+      <div className="space-y-6">
+        {sharedGoals.map((goal, i) => (
+          <motion.div key={i} variants={cardVariants} className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-medium text-gray-800 dark:text-gray-200">{goal.title}</h4>
+                <p className="text-sm text-gray-500">{goal.target}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="h-4 w-4 text-pink-500" />
+                <span className="text-sm font-medium">{goal.streak} days</span>
+              </div>
+            </div>
+            <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
               <motion.div
-                key={index}
-                variants={listItemVariants}
-                className="space-y-2"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium">{goal.title}</h4>
-                    <p className="text-sm text-gray-500">{goal.target}</p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Award className="h-4 w-4 text-pink-500" />
-                    <span className="text-sm font-medium">{goal.streak} days</span>
-                  </div>
-                </div>
-                <div className="h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${goal.progress}%` }}
-                    transition={{
-                      duration: 1,
-                      ease: [0.645, 0.045, 0.355, 1]
-                    }}
-                    className="h-full bg-gradient-to-r from-pink-500 to-purple-600"
-                  />
-                </div>
-              </motion.div>
+                initial={{ width: 0 }}
+                animate={{ width: `${goal.progress}%` }}
+                className="h-full bg-gradient-to-r from-pink-400 to-pink-600"
+                transition={{ duration: 1 }}
+              />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  )
+
+  const renderCycleComparison = () => (
+    <motion.div variants={cardVariants} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">Cycle Synchronization</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-6">
+          {comparisonMetrics.map((metric, i) => (
+            <div key={i} className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="font-medium">{metric.label}</span>
+                <span className="text-gray-500">{metric.value}%</span>
+              </div>
+              <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${metric.value}%` }}
+                  className="h-full bg-gradient-to-r from-pink-400 to-pink-600"
+                  transition={{ delay: i * 0.2 }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="relative h-64">
+          <div className="absolute inset-0 flex items-end justify-between px-4">
+            {sharedCycleData.days.map((day, i) => (
+              <motion.div
+                key={i}
+                initial={{ height: 0 }}
+                animate={{ height: `${day.symptoms * 15}%` }}
+                className="w-2 bg-gradient-to-t from-pink-400 to-pink-600 rounded-full"
+                transition={{ delay: i * 0.02 }}
+              />
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-pink-100/20 dark:border-pink-900/20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <header className="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-4"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-600 rounded-full blur-lg opacity-20 animate-pulse" />
-                <Heart className="h-8 w-8 text-pink-500 relative" />
+            <div className="flex items-center gap-4">
+              <div className="p-2 rounded-full bg-pink-500/20">
+                <Heart className="h-6 w-6 text-pink-500" />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                Partners Dashboard
-              </h1>
-            </motion.div>
-            <div className="flex items-center space-x-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Partners Dashboard</h1>
+            </div>
+            <div className="flex items-center gap-4">
+              <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-500"
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-500 relative"
-              >
+              </button>
+              <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 relative">
                 <Bell className="h-5 w-5" />
-                <span className="absolute top-0 right-0 h-2 w-2 bg-pink-500 rounded-full ring-2 ring-white dark:ring-gray-900" />
-              </motion.button>
+                <span className="absolute top-1 right-1 h-2 w-2 bg-pink-500 rounded-full" />
+              </button>
             </div>
           </div>
         </div>
       </header>
+
+      <main className="container mx-auto px-4 py-8">
+        <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex overflow-x-auto p-1 gap-1 bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-inner border border-gray-200 dark:border-gray-800"
+          >
+            {['overview', 'goals', 'cycle'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 text-sm rounded-lg min-w-max ${
+                  activeTab === tab
+                    ? 'bg-pink-500 text-white'
+                    : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
+          </motion.div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              variants={pageTransition}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="space-y-8"
+            >
+              {activeTab === 'overview' && renderOverview()}
+              {activeTab === 'goals' && renderSharedGoals()}
+              {activeTab === 'cycle' && renderCycleComparison()}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </main>
     </div>
   )
 }
