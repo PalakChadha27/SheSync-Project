@@ -95,7 +95,15 @@ export function Dashboard() {
       setLoading(true);
       const userId = localStorage.getItem("userId");
       if (!userId) {
+
         setError("User ID not found. Please log in.");
+        setLoading(false);
+        return;
+      }
+        const token = localStorage.getItem("token");
+      if (!token) {
+        
+        setError("token not found. Please log in.");
         setLoading(false);
         return;
       }
@@ -108,6 +116,10 @@ export function Dashboard() {
             `${url}api/period/periodtracking/${userId}`,
             {
               signal: controller.signal,
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${localStorage.getItem("token") || ""}`, // Ensure token exists
+              },
             }
           );
           clearTimeout(id);

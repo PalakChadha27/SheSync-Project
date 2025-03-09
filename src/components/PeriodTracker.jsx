@@ -202,7 +202,13 @@ export function PeriodTracker() {
       try {
         const response = await axios.post(
           `${server_url}api/period/trackerdata`,
-          submissionData
+          submissionData,
+        {headers: 
+          {
+            "Content-Type": "application/json",
+            "Authorization": `${localStorage.getItem("token") || ""}`, // Ensure token exists
+          },
+        }
         );
         console.log("Data submitted successfully:", response.data);
         setShowHealthTips(true);

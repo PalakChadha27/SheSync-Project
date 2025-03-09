@@ -12,6 +12,7 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [userId, setUserId] = useState(localStorage.getItem("userId") || "");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [darkMode, setDarkMode] = useState(
     () => localStorage.getItem("darkMode") === "true"
   );
@@ -80,6 +81,8 @@ export function Login() {
       console.log("Login successful:", response.data);
       setUserId(response.data.userId);
       localStorage.setItem("userId", response.data.userId);
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
       console.log("UserId set:", response.data.userId);
       navigate("/");
     } catch (error) {
@@ -136,7 +139,7 @@ export function Login() {
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div className="rounded-md shadow-sm -space-y-px">
-            <div>
+            {/* <div>
               <label htmlFor="Parent email-address" className="sr-only">
                 enter your Parent Email address
               </label>
@@ -155,8 +158,8 @@ export function Login() {
                                 sm:text-sm transition-colors duration-200"
                 placeholder="Enter your parents Email address"
               />
-            </div>
-            <div>
+            </div> */}
+            <div> 
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
