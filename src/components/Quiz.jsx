@@ -11,34 +11,64 @@ export function Quiz({ onQuizComplete }) {
 
   const questions = [
     {
-      questionText: "What is the average length of a menstrual cycle?",
+      questionText: "What is the function of progesterone in the menstrual cycle?",
       answerOptions: [
-        { answerText: "14 days", isCorrect: false },
-        { answerText: "28 days", isCorrect: true },
-        { answerText: "45 days", isCorrect: false },
-        { answerText: "60 days", isCorrect: false },
+        { answerText: "Triggers ovulation", isCorrect: false },
+        { answerText: "Maintains the uterine lining", isCorrect: true },
+        { answerText: "Inhibits FSH and LH", isCorrect: false },
+        { answerText: "Stimulates follicle growth", isCorrect: false },
       ],
-      explanation: "The average menstrual cycle is 28 days long, although it can range from 21 to 35 days in adults."
+      explanation: "Progesterone helps maintain the uterine lining after ovulation to support a potential pregnancy."
     },
     {
-      questionText: "Which of these is NOT a phase of the menstrual cycle?",
+      questionText: "During which phase of the menstrual cycle does ovulation occur?",
       answerOptions: [
         { answerText: "Follicular phase", isCorrect: false },
-        { answerText: "Ovulation", isCorrect: false },
+        { answerText: "Ovulation phase", isCorrect: true },
         { answerText: "Luteal phase", isCorrect: false },
-        { answerText: "Gestation phase", isCorrect: true },
+        { answerText: "Menstrual phase", isCorrect: false },
       ],
-      explanation: "The menstrual cycle consists of the follicular phase, ovulation, and luteal phase. Gestation is related to pregnancy, not the menstrual cycle."
+      explanation: "Ovulation occurs around the middle of the cycle, usually on day 14 of a 28-day cycle."
     },
     {
-      questionText: "What hormone is primarily responsible for the thickening of the uterine lining?",
+      questionText: "Which hormone surges to trigger ovulation?",
       answerOptions: [
-        { answerText: "Estrogen", isCorrect: true },
-        { answerText: "Testosterone", isCorrect: false },
         { answerText: "Progesterone", isCorrect: false },
+        { answerText: "Luteinizing hormone (LH)", isCorrect: true },
+        { answerText: "Estrogen", isCorrect: false },
         { answerText: "Follicle-stimulating hormone (FSH)", isCorrect: false },
       ],
-      explanation: "Estrogen is primarily responsible for the thickening of the uterine lining during the first half of the menstrual cycle."
+      explanation: "A surge in luteinizing hormone (LH) triggers ovulation, causing the release of an egg."
+    },
+    {
+      questionText: "What happens during the follicular phase?",
+      answerOptions: [
+        { answerText: "The uterine lining is shed", isCorrect: false },
+        { answerText: "An egg is released", isCorrect: false },
+        { answerText: "Follicles develop in the ovary", isCorrect: true },
+        { answerText: "Progesterone levels peak", isCorrect: false },
+      ],
+      explanation: "During the follicular phase, follicles develop in the ovary, with one dominant follicle maturing to release an egg."
+    },
+    {
+      questionText: "Which hormone is responsible for stimulating follicle growth?",
+      answerOptions: [
+        { answerText: "Luteinizing hormone (LH)", isCorrect: false },
+        { answerText: "Estrogen", isCorrect: false },
+        { answerText: "Follicle-stimulating hormone (FSH)", isCorrect: true },
+        { answerText: "Progesterone", isCorrect: false },
+      ],
+      explanation: "FSH stimulates the growth of follicles in the ovary, leading to egg maturation."
+    },
+    {
+      questionText: "What happens to the uterine lining if fertilization does not occur?",
+      answerOptions: [
+        { answerText: "It thickens further", isCorrect: false },
+        { answerText: "It remains the same", isCorrect: false },
+        { answerText: "It sheds, resulting in menstruation", isCorrect: true },
+        { answerText: "It turns into a placenta", isCorrect: false },
+      ],
+      explanation: "If fertilization does not occur, progesterone levels drop, causing the uterine lining to shed during menstruation."
     },
   ];
 
@@ -105,11 +135,11 @@ export function Quiz({ onQuizComplete }) {
         </div>
       ) : (
         <>
-          <div className="question-section mb-6 text-white">
-            <div className="question-count text-lg font-medium mb-2">
+          <div className="question-section mb-6 text-black-900 dark:text-gray-200">
+            <div className="question-count font-medium mb-2">
               Question {currentQuestion + 1} of {questions.length}
             </div>
-            <h3 className="question-text text-xl font-semibold mb-4 text-white">{questions[currentQuestion].questionText}</h3>
+            <h3 className="question-text text-xl font-semibold mb-4 text-black-900 dark:text-gray-200">{questions[currentQuestion].questionText}</h3>
             <div className="w-full bg-pink-200 rounded-full h-2.5 mb-6 dark:bg-pink-700">
               <div className="bg-pink-600 h-2.5 rounded-full dark:bg-pink-500" style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}></div>
             </div>
