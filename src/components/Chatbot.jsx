@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  ClipboardList,
   Send,
   Moon,
   Sun,
@@ -27,7 +28,8 @@ import {
   MessageCircle,
   HeartHandshake,
   Handshake,
-  ChevronRight
+  ChevronRight,
+  ClipboardList
 } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -303,6 +305,11 @@ export function Chatbot() {
               label="Track Your Health"
               onClick={() => navigate("/tracker")}
             />
+            <SidebarLink
+                                  icon={<ClipboardList size={20} />}
+                                  label="PCOS Diagnosis"
+                                  onClick={() => navigate("/partner")}
+                                />
             <SidebarLink
               icon={<Stethoscope size={20} />}
               label="Expert Consultation"

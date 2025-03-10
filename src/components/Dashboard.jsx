@@ -9,6 +9,7 @@ import {
   GraduationCap,
   ShoppingBag,
   ActivitySquare,
+  ClipboardList,
   Stethoscope,
   Bot,
   ChevronRight,
@@ -368,6 +369,7 @@ export function Dashboard() {
         className={`w-[240px] bg-pink-100 dark:bg-gray-800  flex flex-col transition-all duration-300 ease-in-out ${
           sidebarVisible ? "translate-x-0" : "-translate-x-full"
         }`}
+        style={{ zIndex: 40 }}
       >
         <h1 className="text-xl font-semibold text-pink-600 mb-6">
           SheSync
@@ -399,6 +401,11 @@ export function Dashboard() {
               icon={<ActivitySquare size={20} />}
               label="Track Your Health"
               onClick={() => navigate("/tracker")}
+            />
+                        <NavItem
+              icon={<ClipboardList size={20} />}
+              label="PCOS Diagnosis"
+              onClick={() => navigate("/partner")}
             />
             <NavItem
               icon={<Stethoscope size={20} />}

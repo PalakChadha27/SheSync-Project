@@ -10,6 +10,7 @@ import {
   GraduationCap,
   ShoppingBag,
   ActivitySquare,
+  ClipboardList,
   Stethoscope,
   Bot,
   HeartHandshake,
@@ -101,6 +102,11 @@ export function Landing() {
             label="Track Your Health"
             onClick={() => navigate("/tracker")}
           />
+          <SidebarLink
+                      icon={<ClipboardList size={20} />}
+                      label="PCOS Diagnosis"
+                      onClick={() => navigate("/partner")}
+                    />
           <SidebarLink
             icon={<Stethoscope size={20} />}
             label="Expert Consultation"

@@ -26,6 +26,7 @@ import {
   Home,
   GraduationCap,
   ActivitySquare,
+  ClipboardList,
   Stethoscope,
   Bot,
 } from "lucide-react";
@@ -399,6 +400,11 @@ export function Diagnosis() {
             icon={<ActivitySquare size={20} />}
             label="Track Your Health"
             onClick={() => navigate("/tracker")}
+          />
+                    <SidebarLink
+            icon={<ClipboardList size={20} />}
+            label="PCOS Diagnosis"
+            onClick={() => navigate("/partner")}
             active
           />
           <SidebarLink

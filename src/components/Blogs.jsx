@@ -40,7 +40,8 @@ import {
   Pill,
   Droplet,
   X,
-  ChevronRight
+  ChevronRight,
+  ClipboardList
 } from "lucide-react";
 import { Quiz } from "./Quiz";
 
@@ -399,6 +400,11 @@ export function Blogs() {
                 label="Track Your Health"
                 onClick={() => navigate("/tracker")}
               />
+                                  <SidebarLink
+                                                        icon={<ClipboardList size={20} />}
+                                                        label="PCOS Diagnosis"
+                                                        onClick={() => navigate("/partner")}
+                                                      />
               <SidebarLink
                 icon={<Stethoscope size={20} />}
                 label="Expert Consultation"

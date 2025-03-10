@@ -25,6 +25,7 @@ import {
   Home,
   GraduationCap,
   ActivitySquare,
+  ClipboardList,
   Stethoscope,
   Bot,
 } from "lucide-react";
@@ -421,6 +422,11 @@ export function PeriodTracker() {
             onClick={() => navigate("/tracker")}
             active
           />
+                              <SidebarLink
+                                                    icon={<ClipboardList size={20} />}
+                                                    label="PCOS Diagnosis"
+                                                    onClick={() => navigate("/partner")}
+                                                  />
           <SidebarLink
             icon={<Stethoscope size={20} />}
             label="Expert Consultation"
