@@ -409,7 +409,7 @@ export function Dashboard() {
             />
             <NavItem
               icon={<Stethoscope size={20} />}
-              label="Expert Consultation"
+              label="ExpertConsultation"
               onClick={() => navigate("/consultations")}
             />
             <NavItem
@@ -424,7 +424,7 @@ export function Dashboard() {
             />
             <NavItem
               icon={<AppWindowMac size={20} />}
-              label="Parent's Dashboard"
+              label="Parent'sDashboard"
               onClick={() => navigate("/parents")}
             />
             <NavItem
