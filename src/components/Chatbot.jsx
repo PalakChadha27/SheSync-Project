@@ -28,8 +28,7 @@ import {
   MessageCircle,
   HeartHandshake,
   Handshake,
-  ChevronRight,
-  ClipboardList
+  ChevronRight
 } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
