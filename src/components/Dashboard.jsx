@@ -371,11 +371,11 @@ export function Dashboard() {
         }`}
         style={{ zIndex: 40 }}
       >
-        <h1 className="text-xl font-semibold text-pink-600 mb-6">
+        <div className="px-4 py-4 flex flex-col space-y-2">
+        <h1 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mt-4 ml-4">
           SheSync
         </h1>
-        <nav className="flex-1">
-          <ul className="space-y-2">
+        <nav className="px-4 py-4 flex flex-col space-y-2">
             <NavItem
               icon={<LayoutDashboard size={20} />}
               label="Dashboard"
@@ -458,8 +458,8 @@ export function Dashboard() {
                 )
               }
             />
-          </ul>
         </nav>
+        </div>
         <div className="pt-6 mt-6 border-t border-[rgba(var(--foreground),0.1)]">
           <div className="flex items-center">
             <div className="w-8 h-8 rounded-half bg-[rgba(var(--foreground),0.1)] flex items-center justify-center text-sm font-medium">
