@@ -48,8 +48,8 @@ SheSync is an all-in-one interactive platform designed to educate, empower, and 
 - **AI-Driven Insights**: Tailored recommendations and health tips based on tracking data.  
 - **Health Suggestions**: Manage symptoms effectively with AI-generated insights.
 
-### 7. **Parents Dashboard**
-<img src="pd.png" alt="Parents Dashboard" width="400">
+### 7. **Parent's Dashboard**
+<img src="pd.png" alt="Parent's Dashboard" width="400">
 
 - **Teen Health Monitoring**: Track cycles with parental consent
 - **Educational Resources**: Guides for puberty conversations

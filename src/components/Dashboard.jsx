@@ -424,7 +424,7 @@ export function Dashboard() {
             />
             <NavItem
               icon={<AppWindowMac size={20} />}
-              label="Parents Dashboard"
+              label="Parent's Dashboard"
               onClick={() => navigate("/parents")}
             />
             <NavItem
@@ -730,7 +730,7 @@ export function Dashboard() {
               <Card>
                 <h3 className="font-semibold mb-4">Data Sharing Settings</h3>
                 <p className="text-sm text-[rgb(var(--muted-foreground))] mb-4">
-                  Select the data you want to share with the parent dashboard:
+                  Select the data you want to share with the Parent's Dashboard:
                 </p>
                 <div className="space-y-4">
                   <DataToggle

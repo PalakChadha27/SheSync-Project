@@ -71,7 +71,7 @@ export function PrivacyForm({ onSave }) {
       <div className="mt-4 text-sm text-gray-600 dark:text-gray-400 flex items-start">
         <AlertCircle className="mr-2 flex-shrink-0 mt-1" size={16} />
         <p>
-          Your privacy is important to us. These settings control what information is shared with the parent dashboard. You can change these settings at any time.
+          Your privacy is important to us. These settings control what information is shared with the Parent's Dashboard. You can change these settings at any time.
         </p>
       </div>
     </div>

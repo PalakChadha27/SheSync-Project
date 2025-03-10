@@ -422,7 +422,7 @@ export function Blogs() {
               />
               <SidebarLink
                 icon={<AppWindowMac size={20} />}
-                label="Parents Dashboard"
+                label="Parent's Dashboard"
                 onClick={() => navigate("/parents")}
               />
               <SidebarLink
