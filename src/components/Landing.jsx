@@ -364,6 +364,18 @@ export function Landing() {
                 </p>
               </div>
               <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <ClipboardList className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() => navigate("/partner")}/>
+                <h4
+                  className="text-lg font-semibold text-pink-600 cursor-pointer  hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 ..."
+                  
+                >
+                  PCOS Diagnosis
+                </h4>
+                <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
+                  A tool to help you diagnose PCOS and get personalized advice.
+                </p>
+              </div>
+              <div className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <Handshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" onClick={() =>
               window.open(
                 "https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html",
@@ -438,7 +450,7 @@ export function Landing() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+            {/*  <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
               <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
             </div>
           </Card>
