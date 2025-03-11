@@ -110,7 +110,17 @@ export function Chatbot() {
       handleSubmit(e);
     }
   };
-
+  const formatMessage = (text) => {
+    return text.split('**').map((part, index) => {
+      return index % 2 === 1 ? (
+        <strong key={index} className="text-pink-600 dark:text-pink-400">
+          {part}
+        </strong>
+      ) : (
+        part
+      );
+    });
+  };
   const clearChat = () => {
     setMessages([]);
   };
@@ -163,14 +173,14 @@ export function Chatbot() {
       @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600&display=swap');
       
       .SheSync-chatbot {
-        --fc-bg-primary: #1A1B26;
-        --fc-bg-secondary: #24283B;
-        --fc-text-primary: #FFFFFF;
-        --fc-text-secondary: #A0AEC0;
-        --fc-accent: #FEC5D9;
-        --fc-accent-dark: #F687B3;
-        --fc-input-bg: #1A1B26;
-        --fc-input-text: #FFFFFF;
+--fc-bg-primary: #FFF5F7;
+    --fc-bg-secondary: #FFFFFF;
+    --fc-text-primary: #2D3748;
+    --fc-text-secondary: #718096;
+    --fc-accent: #F687B3;
+    --fc-accent-dark: #FEC5D9;
+    --fc-input-bg: #FFFFFF;
+    --fc-input-text: #2D3748;
       }
 
       .SheSync-chatbot.light {
@@ -181,7 +191,7 @@ export function Chatbot() {
       }
 
       .SheSync-chatbot {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Poppins', sans-serif;
       }
 
       .header-button {
@@ -191,13 +201,13 @@ export function Chatbot() {
       }
 
       .message-bubble {
-        padding: 1rem;
-        border-radius: 1rem;
-        line-height: 1.5;
-        transition: all 0.2s;
-        white-space: pre-wrap;
-        word-break: break-word;
-        hyphens: auto;
+         padding: 1.2rem 1.5rem;
+    border-radius: 1.5rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    max-width: 85%;
       }
 
       .message-bubble:hover {
@@ -208,6 +218,20 @@ export function Chatbot() {
       .message-appear {
         animation: appearAnimation 0.3s ease-out;
       }
+        
+
+       .message-bubble.user {
+    background: linear-gradient(135deg, #F687B3 0%, #FEC5D9 100%);
+    color: #FFFFFF;
+    border-radius: 1.5rem 1.5rem 0.5rem 1.5rem;
+  }
+
+  .message-bubble.assistant {
+    background: var(--fc-bg-secondary);
+    color: var(--fc-text-primary);
+    border: 1px solid #FEC5D9;
+    border-radius: 1.5rem 1.5rem 1.5rem 0.5rem;
+  }
 
       .emoji-grid {
         display: grid;
@@ -249,6 +273,12 @@ export function Chatbot() {
         background-color: var(--fc-accent);
         border-radius: 3px;
       }
+        .SheSync-chatbot.dark {
+    --fc-bg-primary: #1A1B26;
+    --fc-bg-secondary: #24283B;
+    --fc-text-primary: #FFFFFF;
+    --fc-text-secondary: #A0AEC0;
+  }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
@@ -432,7 +462,7 @@ export function Chatbot() {
                 </div>
               )}
               <div className="flex flex-col max-w-[70%]">
-                <div
+                {/* <div
                   className={`message-bubble inline-block whitespace-pre-line text-base ${
                     message.role === "user"
                       ? "bg-[var(--fc-accent)] text-black"
@@ -440,7 +470,14 @@ export function Chatbot() {
                   }`}
                 >
                   {message.content}
-                </div>
+                </div> */}
+                <div
+  className={`message-bubble ${
+    message.role === "user" ? "user" : "assistant"
+  } message-appear`}
+>
+  {formatMessage(message.content)}
+</div>
                 {message.role === "assistant" && (
                   <div className="flex mt-2 space-x-2">
                     <button
