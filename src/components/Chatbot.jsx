@@ -356,10 +356,10 @@ export function Chatbot() {
               onClick={() => navigate("/symptomsanalyzer")}
             />
             <SidebarLink
-                        icon={<AppWindowMac size={20} />}
-                        label="Parent's Dashboard"
-                        onClick={() => navigate("/parents")}
-                      />
+            icon={<AppWindowMac size={20} />}
+            label="Parent's Dashboard"
+            onClick={() => navigate("/parents")}
+            />
             <SidebarLink
               icon={<MessageSquare size={20} />}
               label="Forums"
