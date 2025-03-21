@@ -453,7 +453,7 @@ export function Landing() {
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="text-gray-400 text-sm">Team Size</p>
-                        <p className="text-3xl font-bold text-white">03</p>
+                        <p className="text-3xl font-bold text-white">04</p>
                       </div>
                       <div className="h-10 w-10 rounded-full bg-pink-500/20 flex items-center justify-center">
                         <Users className="h-5 w-5 text-pink-400" />

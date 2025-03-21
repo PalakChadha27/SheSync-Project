@@ -6,6 +6,8 @@ import { ChevronLeft, ChevronRight, Linkedin, Github } from 'lucide-react'
 import palakImage from '../../public/images/palak1.jpeg'
 import vibhorImage from '../../public/images/vibhor.jpeg'
 import deepakImage from '../../public/images/deepak.jpeg'
+import anishkaImage from '../../public/images/anishka.jpeg'
+import ankitaImage from '../../public/images/ankita.jpeg'
 
 const teamMembers = [
   {
@@ -30,12 +32,22 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Vibhor Sharma",
-    role: "Back-End developer",
-    image: vibhorImage,
-    bio: "Hi, I'm Vibhor! Passionate about Backend",
-    linkedin: "https://www.linkedin.com/in/vibhor-sharma-639174259 ",
-    github: "https://github.com/VibhorSharma199",
+    name: "Anishka Gupta",
+    role: "AI-ML Enthusiast",
+    image: anishkaImage,
+    bio: "Hi, I'm Anishka! Passionate about Machine Learning and AI",
+    linkedin: "https://www.linkedin.com/in/anishkaguptaa ",
+    github: "https://github.com/Anishkagupta04",
+    isLead: true
+  },
+  {
+    id: 4,
+    name: "Ankita Sajwan",
+    role: "AI-ML Enthusiast",
+    image: ankitaImage,
+    bio: "Hi, I'm Ankita! Passionate about Ai and ML",
+    linkedin: "https://www.linkedin.com/in/ankita-sajwan-288425261 ",
+    github: "https://github.com/AnkitaSajwan2317",
     isLead: true
   }
 ]
