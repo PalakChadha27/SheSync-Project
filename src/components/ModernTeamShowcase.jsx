@@ -33,7 +33,7 @@ const teamMembers = [
   {
     id: 3,
     name: "Anishka Gupta",
-    role: "AI-ML Developer",
+    role: "AI-ML Engineer",
     image: anishkaImage,
     bio: "Hi, I'm Anishka! Passionate about Machine Learning and AI",
     linkedin: "https://www.linkedin.com/in/anishkaguptaa ",
@@ -43,7 +43,7 @@ const teamMembers = [
   {
     id: 4,
     name: "Ankita Sajwan",
-    role: "AI-ML Developer",
+    role: "AI-ML Engineer",
     image: ankitaImage,
     bio: "Hi, I'm Ankita! Passionate about Ai and ML",
     linkedin: "https://www.linkedin.com/in/ankita-sajwan-288425261 ",
